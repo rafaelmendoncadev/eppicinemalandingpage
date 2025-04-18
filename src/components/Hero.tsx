@@ -7,9 +7,9 @@ export default function Hero() {
     <section className="min-h-[70vh] flex items-center justify-center bg-gradient-primary relative overflow-hidden">
       {/* Adicionando imagem de fundo com overlay */}
       <div 
-        className="absolute inset-0 bg-cover bg-center opacity-20" 
+        className="absolute inset-0 bg-cover bg-center opacity-30" 
         style={{ 
-          backgroundImage: `url('https://images.unsplash.com/photo-1721322800607-8c38375eef04')`,
+          backgroundImage: `url('/lovable-uploads/b962a95c-88ec-4d0c-aab3-04eed2de94e7.png')`,
         }}
       ></div>
       
