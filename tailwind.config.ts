@@ -10,13 +10,21 @@ export default {
 	],
 	prefix: "",
 	theme: {
-		container: {
-			center: true,
-			padding: '2rem',
-			screens: {
-				'2xl': '1400px'
-			}
-		},
+    container: {
+      center: true,
+      padding: '2rem',
+      screens: {
+        'sm': '640px',
+        'md': '768px',
+        'lg': '1024px',
+        'xl': '1280px',
+        '2xl': '1400px',
+      }
+    },
+    extend: {
+      backgroundImage: {
+        'gradient-primary': 'linear-gradient(135deg, #8B5CF6 0%, #10B981 100%)',
+      },
 		extend: {
 			colors: {
 				border: 'hsl(var(--border))',
