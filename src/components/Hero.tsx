@@ -5,9 +5,8 @@ import { Download } from "lucide-react";
 export default function Hero() {
   return (
     <section className="min-h-[70vh] flex items-center justify-center bg-gradient-primary relative overflow-hidden">
-      {/* Adicionando imagem de fundo com overlay */}
       <div 
-        className="absolute inset-0 bg-cover bg-center opacity-30" 
+        className="absolute inset-0 bg-cover bg-center" 
         style={{ 
           backgroundImage: `url('/lovable-uploads/1efd4eac-e665-4453-82cf-4d3bf6f31709.png')`,
         }}
@@ -28,3 +27,4 @@ export default function Hero() {
     </section>
   );
 }
+
