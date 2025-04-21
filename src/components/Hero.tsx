@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
 
@@ -5,9 +6,9 @@ export default function Hero() {
   return (
     <section className="min-h-[70vh] flex items-center justify-center bg-gradient-primary relative overflow-hidden">
       <div 
-        className="absolute inset-0 bg-cover bg-center opacity-30" 
+        className="absolute inset-0 bg-cover bg-center" 
         style={{ 
-          backgroundImage: `url('https://images.unsplash.com/photo-1611926653458-09294b3142bf?auto=format&fit=crop&q=80')`,
+          backgroundImage: `url('https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?auto=format&fit=crop&q=80')`,
         }}
       ></div>
       
