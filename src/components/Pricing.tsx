@@ -26,7 +26,7 @@ export default function Pricing() {
               </li>
             </ul>
             <Button 
-              onClick={() => window.open('https://recargaoriginal.lojavirtualnuvem.com.br/produtos/recarga-my-family-cinema-mfc-365-dias/', '_blank')}
+              onClick={() => window.open('https://recargaoriginal.lojavirtualnuvem.com.br/produtos/recarga-my-family-cinema-mfc-30-dias/', '_blank')}
               className="w-full bg-violet-600 hover:bg-violet-700"
             >
               Comprar Recarga
@@ -63,3 +63,4 @@ export default function Pricing() {
       </div>
     </section>;
 }
+
