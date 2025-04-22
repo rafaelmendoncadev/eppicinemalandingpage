@@ -1,10 +1,7 @@
-
 import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
-
 export default function Pricing() {
-  return (
-    <section className="py-20 bg-gray-50">
+  return <section className="py-20 bg-gray-50">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-violet-900">
           Escolha o melhor plano para você!
@@ -19,16 +16,14 @@ export default function Pricing() {
             <ul className="mb-8 space-y-4">
               <li className="flex items-center">
                 <Check className="text-emerald-500 mr-2" />
-                <span>Acesso ilimitado ao conteúdo</span>
+                <span>Recarga 30 dias</span>
               </li>
               <li className="flex items-center">
                 <Check className="text-emerald-500 mr-2" />
-                <span>Suporte 24/7</span>
+                <span>3x sem juros no cartão</span>
               </li>
             </ul>
-            <Button className="w-full bg-violet-600 hover:bg-violet-700">
-              Assine Agora
-            </Button>
+            <Button className="w-full bg-violet-600 hover:bg-violet-700">Comprar Recarga</Button>
           </div>
           <div className="bg-gradient-primary p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow text-white">
             <h3 className="text-2xl font-bold mb-4">Anual</h3>
@@ -56,6 +51,5 @@ export default function Pricing() {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 }
