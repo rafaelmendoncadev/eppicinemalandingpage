@@ -34,20 +34,18 @@ export default function Pricing() {
             <ul className="mb-8 space-y-4">
               <li className="flex items-center">
                 <Check className="mr-2" />
-                <span>Acesso ilimitado ao conteúdo</span>
+                <span>Recarga por 1 Ano</span>
               </li>
               <li className="flex items-center">
                 <Check className="mr-2" />
-                <span>Suporte 24/7</span>
+                <span>3x sem juros no cartão</span>
               </li>
               <li className="flex items-center">
                 <Check className="mr-2" />
-                <span>50% de desconto</span>
+                <span>171,00 no  PIX</span>
               </li>
             </ul>
-            <Button className="w-full bg-white text-violet-600 hover:bg-violet-100">
-              Assine Agora
-            </Button>
+            <Button className="w-full bg-white text-violet-600 hover:bg-violet-100">Comprar Recarga</Button>
           </div>
         </div>
       </div>
