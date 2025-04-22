@@ -1,0 +1,22 @@
+
+import { MessageSquare } from "lucide-react";
+import { Button } from "./ui/button";
+
+export default function FloatingWhatsApp() {
+  return (
+    <a
+      href="https://api.whatsapp.com/send?phone=5561998519524&text=Desejo%20Suporte%20para%20Eppi%20Cinema"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="fixed bottom-6 right-6 z-50"
+    >
+      <Button 
+        size="lg"
+        className="rounded-full bg-green-500 hover:bg-green-600 shadow-lg hover:shadow-xl transition-all duration-300"
+      >
+        <MessageSquare className="mr-2" />
+        Suporte
+      </Button>
+    </a>
+  );
+}

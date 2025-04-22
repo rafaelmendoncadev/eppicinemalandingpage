@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import Downloads from "@/components/Downloads";
 import Pricing from "@/components/Pricing";
 import Navbar from "@/components/Navbar";
+import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 
 export default function Index() {
   return (
@@ -17,6 +18,7 @@ export default function Index() {
       <div id="pricing">
         <Pricing />
       </div>
+      <FloatingWhatsApp />
     </main>
   );
 }
