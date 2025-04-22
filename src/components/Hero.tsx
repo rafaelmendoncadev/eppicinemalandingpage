@@ -1,8 +1,16 @@
 
+import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
 
 export default function Hero() {
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section className="min-h-[70vh] flex items-center justify-center bg-gradient-primary relative overflow-hidden">
       <div 
@@ -17,6 +25,7 @@ export default function Hero() {
           Eppi Cinema - Seu portal para entretenimento ilimitado!
         </h1>
         <Button 
+          onClick={() => scrollToSection('downloads')}
           size="lg"
           className="bg-white text-violet-600 hover:bg-violet-100 transition-all duration-300 text-lg px-8 py-6"
         >
