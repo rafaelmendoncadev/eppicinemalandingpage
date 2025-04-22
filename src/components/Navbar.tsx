@@ -1,6 +1,6 @@
 
 import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
-import { Home, Download, CreditCard } from "lucide-react";
+import { Home, Download, CreditCard, WhatsApp } from "lucide-react";
 
 export default function Navbar() {
   const scrollToSection = (id: string) => {
@@ -32,6 +32,17 @@ export default function Navbar() {
                 <CreditCard size={16} />
                 Faça sua Recarga
               </button>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <a 
+                href="https://api.whatsapp.com/send?phone=5561998519524&text=Desejo%20Suporte%20para%20Eppi%20Cinema" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className={navigationMenuTriggerStyle() + " gap-2"}
+              >
+                <WhatsApp size={16} />
+                Suporte
+              </a>
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
