@@ -1,6 +1,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
+
 export default function Pricing() {
   return <section className="py-20 bg-gray-50">
       <div className="container mx-auto px-4">
@@ -51,7 +52,12 @@ export default function Pricing() {
                 <span>171,00 no  PIX</span>
               </li>
             </ul>
-            <Button className="w-full bg-white text-violet-600 hover:bg-violet-100">Comprar Recarga</Button>
+            <Button 
+              onClick={() => window.open('https://recargaoriginal.lojavirtualnuvem.com.br/produtos/recarga-my-family-cinema-mfc-365-dias/', '_blank')}
+              className="w-full bg-white text-violet-600 hover:bg-violet-100"
+            >
+              Comprar Recarga
+            </Button>
           </div>
         </div>
       </div>
