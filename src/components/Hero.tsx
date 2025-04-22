@@ -16,7 +16,7 @@ export default function Hero() {
       <div 
         className="absolute inset-0 bg-cover bg-center" 
         style={{ 
-          backgroundImage: `url('https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?auto=format&fit=crop&q=80')`,
+          backgroundImage: `url('https://images.unsplash.com/photo-1721322800607-8c38375eef04?auto=format&fit=crop&q=80')`,
         }}
       ></div>
       
@@ -36,3 +36,4 @@ export default function Hero() {
     </section>
   );
 }
+
