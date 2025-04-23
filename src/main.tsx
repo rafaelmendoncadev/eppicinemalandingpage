@@ -16,5 +16,5 @@ if (!rootElement) {
       <App />
     </StrictMode>
   );
-  console.log("React application rendered");
+  console.log("React application rendered successfully");
 }
