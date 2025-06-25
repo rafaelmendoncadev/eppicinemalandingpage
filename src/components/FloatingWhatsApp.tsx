@@ -5,7 +5,7 @@ import { Button } from "./ui/button";
 export default function FloatingWhatsApp() {
   return (
     <a
-      href="https://api.whatsapp.com/send?phone=5561998519524&text=Desejo%20Suporte%20para%20Eppi%20Cinema"
+      href="https://wa.me/556199380846?text=Necessito%20de%20Suporte%20para%20o%20Eppi%20Cinema"
       target="_blank"
       rel="noopener noreferrer"
       className="fixed bottom-6 right-6 z-50"
