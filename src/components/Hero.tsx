@@ -98,7 +98,7 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Action Buttons */}
+        {/* Action Buttons - Ajustados com espaçamento */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-5">
           <Button 
             onClick={scrollToPricing}
