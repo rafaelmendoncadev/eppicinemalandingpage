@@ -20,7 +20,7 @@ export default function Navbar() {
       <div className="container mx-auto px-4 flex items-center justify-between h-16">
         <div className="flex items-center">
           <img 
-            src="https://eppicinemashop.com/wp-content/uploads/2024/08/Eppicinema_Logo-app-1024x1024.png" 
+            src="/lovable-uploads/717a228b-ebde-4d63-bf4d-3bcdcbb96089.png" 
             alt="Eppi Cinema Logo" 
             className="h-8 w-8 md:h-12 md:w-12 mr-2 md:mr-4"
           />
