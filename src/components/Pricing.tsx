@@ -8,7 +8,7 @@ const Pricing = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-5xl font-bold text-white mb-6 bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">
-            ESCOLHA SEU PLANO
+            ESCOLHA SUA RECARGA
           </h2>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
             Acesso completo ao Eppi Cinema com os melhores preços do mercado

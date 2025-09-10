@@ -105,7 +105,7 @@ const Hero = () => {
             size="lg"
             className="bg-gradient-to-r from-recarga-green-500 to-recarga-lime-500 hover:from-recarga-green-600 hover:to-recarga-lime-600 text-black px-12 py-4 text-lg font-bold rounded-xl transition-all duration-300 transform hover:scale-105 shadow-2xl"
           >
-            VER PLANOS
+            VER RECARGAS
           </Button>
           
           <Button 
@@ -113,7 +113,7 @@ const Hero = () => {
             size="lg"
             className="bg-gradient-to-r from-recarga-red-500 to-recarga-orange-500 hover:from-recarga-red-600 hover:to-recarga-orange-600 text-white px-12 py-4 text-lg font-bold rounded-xl transition-all duration-300 transform hover:scale-105 shadow-2xl"
           >
-            BAIXAR APP
+            Disponível para TV Box e Celular
           </Button>
         </div>
       </div>
