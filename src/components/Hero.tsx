@@ -109,10 +109,10 @@ const Hero = () => {
                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-recarga-green-500 to-recarga-lime-500 text-black px-4 py-1 rounded-full text-sm font-bold shadow-lg">
                  OFERTA ESPECIAL
                </div>
-               <h4 className="text-xl font-bold text-white mb-3">Plano Anual + Brinde</h4>
+               <h4 className="text-xl font-bold text-white mb-3">Recarga Anual + Brinde</h4>
                <p className="text-recarga-red-400 text-2xl font-bold mb-3">🎁 Código Mensal Grátis</p>
                <p className="text-white/90 text-sm mb-4">
-                 Compre o plano anual e ganhe um código mensal, para presentear quem você quiser!!!
+                 Compre a recarga anual e ganhe um código mensal, para presentear quem você quiser!!!
                </p>
                <button 
                  className="w-full bg-gradient-to-r from-recarga-red-500 to-recarga-orange-500 hover:from-recarga-red-600 hover:to-recarga-orange-600 text-white px-6 py-3 rounded-lg font-bold transition-all duration-300 transform hover:scale-105"

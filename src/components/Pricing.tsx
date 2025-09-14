@@ -25,7 +25,7 @@ const Pricing = () => {
             {/* Promoção 1 */}
             <div className="bg-gradient-to-br from-red-500/20 to-orange-500/20 backdrop-blur-lg border border-red-500/30 rounded-3xl p-8 transform hover:scale-105 transition-all duration-300 shadow-2xl hover:shadow-red-500/25">
               <div className="text-center">
-                <h4 className="text-2xl font-bold text-white mb-4">MENSAL</h4>
+                <h4 className="text-2xl font-bold text-white mb-4">RECARGA MENSAL</h4>
                 <div className="text-4xl font-bold mb-4">
                   <span className="bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent">
                     R$ 39<span className="text-lg text-gray-300 font-normal">,99</span>
@@ -71,7 +71,7 @@ const Pricing = () => {
               </div>
               
               <div className="text-center">
-                <h4 className="text-2xl font-bold text-white mb-4">Anual</h4>
+                <h4 className="text-2xl font-bold text-white mb-4">RECARGA ANUAL</h4>
                 <div className="text-4xl font-bold mb-6">
                   <span className="bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">
                     R$ 239<span className="text-lg text-gray-300 font-normal">,99</span>
