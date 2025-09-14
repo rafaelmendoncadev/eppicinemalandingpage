@@ -40,41 +40,87 @@ const Hero = () => {
           </h2>
         </div>
 
-        {/* Pricing Preview */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 max-w-3xl mx-auto">
-          <div className="bg-gradient-to-br from-recarga-green-500/20 to-recarga-lime-500/20 backdrop-blur-lg border border-recarga-green-500/30 rounded-xl p-6 transform hover:scale-105 transition-all duration-300 shadow-2xl hover:shadow-recarga-green-500/25">
-            <h3 className="text-xl font-bold text-white mb-2">Mensal</h3>
-            <div className="text-3xl font-bold mb-4">
-              <span className="bg-gradient-to-r from-recarga-green-400 to-recarga-lime-400 bg-clip-text text-transparent">
-                R$ 39,99
-              </span>
-            </div>
-            <ul className="text-white/90 space-y-2 text-sm">
-              <li>✓ Acesso completo</li>
-              <li>✓ Suporte Técnico</li>
-              <li>✓ Sem anúncios</li>
-              <li>✓ Qualidade HD</li>
-            </ul>
+        {/* Quadros Lado a Lado */}
+        <div className="mb-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            {/* Primeiro Quadro - Você Sabia? */}
+              <div className="bg-gradient-to-br from-recarga-red-500/20 to-recarga-orange-500/20 backdrop-blur-lg border border-recarga-red-500/30 rounded-lg p-4 transform hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-recarga-red-500/25">
+                <h3 className="text-lg md:text-xl font-bold mb-3 text-center">
+                  <span className="bg-gradient-to-r from-recarga-red-400 to-recarga-orange-400 bg-clip-text text-transparent">
+                    Você sabia?
+                  </span>
+                </h3>
+                <div className="text-center">
+                  <p className="text-white/90 text-sm md:text-base leading-relaxed">
+                    Que manter acesso simultâneo a todos os principais serviços de streaming pode custar <span className="text-recarga-red-400 font-bold">R$ 380 por mês</span>? Isso equivale a mais de <span className="text-recarga-orange-400 font-bold">R$ 4.500 anuais</span> só para ter acesso a catálogos fragmentados.
+                  </p>
+                </div>
+              </div>
+
+            {/* Segundo Quadro - Eppi Cinema */}
+              <div className="bg-gradient-to-br from-recarga-green-500/20 to-recarga-lime-500/20 backdrop-blur-lg border border-recarga-green-500/30 rounded-lg p-4 transform hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-recarga-green-500/25">
+                <h4 className="text-lg md:text-xl font-bold mb-3 text-center">
+                  <span className="bg-gradient-to-r from-recarga-green-400 to-recarga-lime-400 bg-clip-text text-transparent">
+                    Eppi Cinema: Tudo em um só lugar.
+                  </span>
+                </h4>
+                <div className="text-center">
+                  <p className="text-white/90 text-sm md:text-base leading-relaxed">
+                    Conheça o <span className="text-recarga-orange-400 font-bold">Eppi Cinema</span>, o aplicativo que revoluciona sua experiência audiovisual! Chega de alternar entre telas e senhas.
+                  </p>
+                </div>
+              </div>
           </div>
-          <div className="bg-gradient-to-br from-recarga-red-500/30 to-recarga-orange-500/30 backdrop-blur-lg border-2 border-recarga-red-400/50 rounded-xl p-6 transform hover:scale-105 transition-all duration-300 shadow-2xl hover:shadow-recarga-red-400/25 relative">
-            <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-recarga-green-400 to-recarga-lime-400 text-black px-4 py-1 rounded-full text-sm font-bold shadow-lg">
-              <span className="flex items-center gap-1">
-                MAIS POPULAR
-              </span>
-            </div>
-            <h3 className="text-xl font-bold text-white mb-2">Anual</h3>
-            <div className="text-3xl font-bold mb-4">
-              <span className="bg-gradient-to-r from-recarga-red-400 to-recarga-orange-400 bg-clip-text text-transparent">
-                R$ 239,99
-              </span>
-            </div>
-            <ul className="text-white/90 space-y-2 text-sm">
-              <li>✓ Acesso completo</li>
-              <li>✓ Suporte Técnico</li>
-              <li>✓ Sem anúncios</li>
-              <li>✓ Qualidade HD/4K</li>
-                <li>✓ Economia de 50%</li>
-            </ul>
+        </div>
+
+
+        {/* Área de Promoções de Setembro */}
+        <div className="mb-12 max-w-5xl mx-auto">
+          <h3 className="text-2xl md:text-3xl font-bold mb-8 text-center">
+            <span className="bg-gradient-to-r from-recarga-green-400 to-recarga-lime-400 bg-clip-text text-transparent">
+              🔥 PROMOÇÕES DE SETEMBRO - MÊS DO CLIENTE
+            </span>
+          </h3>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Promoção 1 */}
+            <div className="bg-gradient-to-br from-recarga-green-500/30 to-recarga-lime-500/30 backdrop-blur-lg border-2 border-recarga-green-400/50 rounded-xl p-6 transform hover:scale-105 transition-all duration-300 shadow-2xl hover:shadow-recarga-green-400/25 relative">
+               <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-recarga-red-500 to-recarga-orange-500 text-white px-4 py-1 rounded-full text-sm font-bold shadow-lg animate-pulse">
+                 15% OFF
+               </div>
+               <h4 className="text-xl font-bold text-white mb-3">Recarga Mensal</h4>
+               <div className="mb-3">
+                 <p className="text-white/70 text-sm line-through">De R$ 39,99</p>
+                 <p className="text-recarga-green-400 text-2xl font-bold">Por R$ 33,99</p>
+               </div>
+               <p className="text-white/90 text-sm mb-4">
+                 Economize R$ 6,00 na sua recarga mensal!
+               </p>
+               <button 
+                 className="w-full bg-gradient-to-r from-recarga-green-500 to-recarga-lime-500 hover:from-recarga-green-600 hover:to-recarga-lime-600 text-white px-6 py-3 rounded-lg font-bold transition-all duration-300 transform hover:scale-105"
+                 onClick={() => window.open('https://biolivre.com.br/nuvembr', '_blank')}
+               >
+                 ATIVAR AGORA
+               </button>
+             </div>
+
+            {/* Promoção 2 */}
+            <div className="bg-gradient-to-br from-recarga-red-500/30 to-recarga-orange-500/30 backdrop-blur-lg border-2 border-recarga-red-400/50 rounded-xl p-6 transform hover:scale-105 transition-all duration-300 shadow-2xl hover:shadow-recarga-red-400/25 relative">
+               <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-recarga-green-500 to-recarga-lime-500 text-black px-4 py-1 rounded-full text-sm font-bold shadow-lg">
+                 OFERTA ESPECIAL
+               </div>
+               <h4 className="text-xl font-bold text-white mb-3">Plano Anual + Brinde</h4>
+               <p className="text-recarga-red-400 text-2xl font-bold mb-3">🎁 Código Mensal Grátis</p>
+               <p className="text-white/90 text-sm mb-4">
+                 Compre o plano anual e ganhe um código mensal, para presentear quem você quiser!!!
+               </p>
+               <button 
+                 className="w-full bg-gradient-to-r from-recarga-red-500 to-recarga-orange-500 hover:from-recarga-red-600 hover:to-recarga-orange-600 text-white px-6 py-3 rounded-lg font-bold transition-all duration-300 transform hover:scale-105"
+                 onClick={() => window.open('https://biolivre.com.br/nuvembr', '_blank')}
+               >
+                 ATIVAR AGORA
+               </button>
+             </div>
           </div>
         </div>
 
