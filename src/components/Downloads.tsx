@@ -4,11 +4,11 @@ import { Smartphone, Tv } from "lucide-react";
 
 export default function Downloads() {
   const handleDownloadAndroid = () => {
-    window.open('https://eppi-cinema.softonic.com.br/android/download', '_blank');
+    window.open('https://baixeseuapp.com.br', '_blank');
   };
 
   const handleDownloadTvBox = () => {
-    window.open('https://www.mediafire.com/file/se7c2dpgucwxmry/eppi_generic_stb_PROD_4.0.0_20240820.apk/file', '_blank');
+    window.open('https://baixeseuapp.com.br', '_blank');
   };
 
   return (
