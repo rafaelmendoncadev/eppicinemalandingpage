@@ -107,12 +107,12 @@ const Hero = () => {
             {/* Promoção 2 */}
             <div className="bg-gradient-to-br from-recarga-red-500/30 to-recarga-orange-500/30 backdrop-blur-lg border-2 border-recarga-red-400/50 rounded-xl p-6 transform hover:scale-105 transition-all duration-300 shadow-2xl hover:shadow-recarga-red-400/25 relative">
                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-recarga-green-500 to-recarga-lime-500 text-black px-4 py-1 rounded-full text-sm font-bold shadow-lg">
-                 OFERTA ESPECIAL
+                 8,5% OFF
                </div>
-               <h4 className="text-xl font-bold text-white mb-3">Recarga Anual + Brinde</h4>
-               <p className="text-recarga-red-400 text-2xl font-bold mb-3">🎁 Código Mensal Grátis</p>
+               <h4 className="text-xl font-bold text-white mb-3">Recarga Anual 8,5% OFF</h4>
+               <p className="text-recarga-red-400 text-2xl font-bold mb-3">Desconto Especial</p>
                <p className="text-white/90 text-sm mb-4">
-                 Compre a recarga anual e ganhe um código mensal, para presentear quem você quiser!!!
+                 Aproveite nosso link de pagamento com um desconto incrível, apenas nesse mês do consumidor.
                </p>
                <button 
                  className="w-full bg-gradient-to-r from-recarga-red-500 to-recarga-orange-500 hover:from-recarga-red-600 hover:to-recarga-orange-600 text-white px-6 py-3 rounded-lg font-bold transition-all duration-300 transform hover:scale-105"
