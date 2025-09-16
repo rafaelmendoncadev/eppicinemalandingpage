@@ -72,6 +72,7 @@ const Pricing = () => {
               
               <div className="text-center">
                 <h4 className="text-2xl font-bold text-white mb-4">RECARGA ANUAL</h4>
+                <p className="text-yellow-400 text-xl font-bold mb-4">5x SEM JUROS!!!</p>
                 <div className="text-4xl font-bold mb-6">
                   <span className="bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">
                     R$ 239<span className="text-lg text-gray-300 font-normal">,99</span>
