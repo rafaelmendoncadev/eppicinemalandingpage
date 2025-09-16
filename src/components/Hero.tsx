@@ -110,8 +110,10 @@ const Hero = () => {
                  8,5% OFF
                </div>
                <h4 className="text-xl font-bold text-white mb-3">Recarga Anual 8,5% OFF</h4>
-               <p className="text-recarga-red-400 text-xl font-bold mb-1">Desconto Especial</p>
-               <p className="text-recarga-red-400 text-2xl font-bold mb-3">R$ 220,00</p>
+               <div className="mb-3">
+                 <p className="text-white/70 text-sm line-through">De R$ 240,00</p>
+                 <p className="text-recarga-red-400 text-2xl font-bold">Por R$ 220,00</p>
+               </div>
                <p className="text-white/90 text-sm mb-4">
                  Aproveite nosso link de pagamento com um desconto incrível, apenas nesse mês do consumidor.
                </p>
