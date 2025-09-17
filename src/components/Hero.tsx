@@ -107,7 +107,12 @@ const Hero = () => {
             {/* Promoção 2 */}
             <div className="bg-gradient-to-br from-recarga-red-500/30 to-recarga-orange-500/30 backdrop-blur-lg border-2 border-recarga-red-400/50 rounded-xl p-6 transform hover:scale-105 transition-all duration-300 shadow-2xl hover:shadow-recarga-red-400/25 relative">
                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-recarga-green-500 to-recarga-lime-500 text-black px-4 py-1 rounded-full text-sm font-bold shadow-lg">
-                 OFERTA ESPECIAL
+                 8,5% OFF
+               </div>
+               <h4 className="text-xl font-bold text-white mb-3">Recarga Anual 8,5% OFF</h4>
+               <div className="mb-3">
+                 <p className="text-white/70 text-sm line-through">De R$ 240,00</p>
+                 <p className="text-recarga-red-400 text-2xl font-bold">Por R$ 220,00</p>
                </div>
                <h4 className="text-lg font-bold text-white mb-3">Recarga Anual com 20% OFF</h4>
                <div className="mb-3">
