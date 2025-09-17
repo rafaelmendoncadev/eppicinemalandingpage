@@ -106,10 +106,10 @@ const Hero = () => {
                <h4 className="text-lg font-bold text-white mb-3">Recarga Anual com 38% OFF</h4>
                <div className="mb-3">
                  <p className="text-white/70 text-sm line-through">De R$ 335,88</p>
-                 <p className="text-recarga-red-400 text-2xl font-bold">Por R$ 208,99</p>
+                 <p className="text-recarga-red-400 text-2xl font-bold">Por R$ 166,99</p>
                </div>
                <p className="text-white/90 text-sm mb-4">
-                 💰 Economize R$ 126,89 na sua recarga anual e tenha acesso completo por um ano inteiro!
+                 💰 Economize R$ 168,89 na sua recarga anual e tenha acesso completo por um ano inteiro!
                </p>
              </div>
           </div>
