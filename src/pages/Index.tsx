@@ -1,7 +1,9 @@
 
 import Hero from "@/components/Hero";
+import HowItWorks from "@/components/HowItWorks";
 import Downloads from "@/components/Downloads";
 import Pricing from "@/components/Pricing";
+import WhyBuyHere from "@/components/WhyBuyHere";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
@@ -13,11 +15,17 @@ export default function Index() {
       <div id="hero">
         <Hero />
       </div>
+      <div id="how-it-works">
+        <HowItWorks />
+      </div>
       <div id="downloads">
         <Downloads />
       </div>
       <div id="pricing">
         <Pricing />
+      </div>
+      <div id="why-buy-here">
+        <WhyBuyHere />
       </div>
       <FloatingWhatsApp />
       <div className="w-full py-3 bg-gradient-to-br from-gray-900 via-purple-900 to-blue-900 text-white">
