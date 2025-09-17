@@ -84,7 +84,7 @@ const Hero = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Promoção 1 */}
-            <div className="bg-gradient-to-br from-recarga-green-500/30 to-recarga-lime-500/30 backdrop-blur-lg border-2 border-recarga-green-400/50 rounded-xl p-6 transform hover:scale-105 transition-all duration-300 shadow-2xl hover:shadow-recarga-green-400/25 relative">
+            <div className="bg-gradient-to-br from-recarga-green-500/30 to-recarga-lime-500/30 backdrop-blur-lg border-2 border-recarga-green-400/50 rounded-xl p-6 transform hover:scale-105 transition-all duration-300 shadow-2xl hover:shadow-recarga-green-400/25 relative flex flex-col h-full">
                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-recarga-red-500 to-recarga-orange-500 text-white px-4 py-1 rounded-full text-sm font-bold shadow-lg animate-pulse">
                  15% OFF
                </div>
@@ -93,13 +93,19 @@ const Hero = () => {
                  <p className="text-white/70 text-sm line-through">De R$ 39,99</p>
                  <p className="text-recarga-green-400 text-2xl font-bold">Por R$ 27,99</p>
                </div>
-               <p className="text-white/90 text-sm mb-4">
+               <p className="text-white/90 text-sm mb-4 flex-grow">
                  Economize R$ 12,00 na sua recarga mensal!
                </p>
+               <button 
+                 className="bg-gradient-to-r from-recarga-green-500 to-recarga-lime-500 hover:from-recarga-green-600 hover:to-recarga-lime-600 text-white px-6 py-2.5 rounded-lg font-bold transition-all duration-300 transform hover:scale-105 w-full"
+                 onClick={() => window.open('https://biolivre.com.br/nuvembr', '_blank')}
+               >
+                 ATIVAR AGORA
+               </button>
              </div>
 
             {/* Promoção 2 */}
-            <div className="bg-gradient-to-br from-recarga-red-500/30 to-recarga-orange-500/30 backdrop-blur-lg border-2 border-recarga-red-400/50 rounded-xl p-6 transform hover:scale-105 transition-all duration-300 shadow-2xl hover:shadow-recarga-red-400/25 relative">
+            <div className="bg-gradient-to-br from-recarga-red-500/30 to-recarga-orange-500/30 backdrop-blur-lg border-2 border-recarga-red-400/50 rounded-xl p-6 transform hover:scale-105 transition-all duration-300 shadow-2xl hover:shadow-recarga-red-400/25 relative flex flex-col h-full">
                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-recarga-green-500 to-recarga-lime-500 text-black px-4 py-1 rounded-full text-sm font-bold shadow-lg">
                  38% OFF
                </div>
@@ -108,27 +114,19 @@ const Hero = () => {
                  <p className="text-white/70 text-sm line-through">De R$ 335,88</p>
                  <p className="text-recarga-red-400 text-2xl font-bold">Por R$ 166,99</p>
                </div>
-               <p className="text-white/90 text-sm mb-4">
+               <p className="text-white/90 text-sm mb-4 flex-grow">
                  💰 Economize R$ 168,89 na sua recarga anual e tenha acesso completo por um ano inteiro!
                </p>
+               <button 
+                 className="bg-gradient-to-r from-recarga-red-500 to-recarga-orange-500 hover:from-recarga-red-600 hover:to-recarga-orange-600 text-white px-6 py-2.5 rounded-lg font-bold transition-all duration-300 transform hover:scale-105 w-full"
+                 onClick={() => window.open('https://biolivre.com.br/nuvembr', '_blank')}
+               >
+                 ATIVAR AGORA
+               </button>
              </div>
           </div>
           
-          {/* Botões lado a lado */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mt-6">
-            <button 
-              className="bg-gradient-to-r from-recarga-green-500 to-recarga-lime-500 hover:from-recarga-green-600 hover:to-recarga-lime-600 text-white px-8 py-3 rounded-lg font-bold transition-all duration-300 transform hover:scale-105 flex-1 max-w-xs"
-              onClick={() => window.open('https://biolivre.com.br/nuvembr', '_blank')}
-            >
-              ATIVAR MENSAL
-            </button>
-            <button 
-              className="bg-gradient-to-r from-recarga-red-500 to-recarga-orange-500 hover:from-recarga-red-600 hover:to-recarga-orange-600 text-white px-8 py-3 rounded-lg font-bold transition-all duration-300 transform hover:scale-105 flex-1 max-w-xs"
-              onClick={() => window.open('https://biolivre.com.br/nuvembr', '_blank')}
-            >
-              ATIVAR ANUAL
-            </button>
-          </div>
+
         </div>
 
         {/* Trust Badges */}
