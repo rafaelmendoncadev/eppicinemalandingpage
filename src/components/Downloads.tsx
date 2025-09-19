@@ -1,21 +1,26 @@
 
 import { Button } from "@/components/ui/button";
 import { Smartphone, Tv } from "lucide-react";
+import { useLanguage } from '../contexts/LanguageContext';
 
 export default function Downloads() {
+  const { t, language } = useLanguage();
+  
   const handleDownloadAndroid = () => {
-    window.open('https://baixeseuapp.com.br', '_blank');
+    const url = language === 'en' ? 'https://abre.bio/nossatvcelular' : 'https://www.baixeseuapp.com.br';
+    window.open(url, '_blank');
   };
 
   const handleDownloadTvBox = () => {
-    window.open('https://baixeseuapp.com.br', '_blank');
+    const url = language === 'en' ? 'https://abre.bio/nossatvbox' : 'https://www.baixeseuapp.com.br';
+    window.open(url, '_blank');
   };
 
   return (
     <section className="py-12 bg-white px-4">
       <div className="container mx-auto">
         <h2 className="text-xl md:text-2xl font-bold text-center mb-6 md:mb-8 text-violet-900">
-          Disponível no Fire Stick, Tv Box e Celulares Android!
+          {t('downloads.title')}
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 max-w-4xl mx-auto">
           <div className="flex flex-col items-center p-3 md:p-4 rounded-xl border-2 border-violet-100 hover:border-violet-300 transition-colors">
@@ -25,7 +30,7 @@ export default function Downloads() {
               className="w-full md:w-auto border-violet-500 text-violet-600 hover:bg-violet-50"
               onClick={handleDownloadTvBox}
             >
-              TV Stick e TV Box
+              {t('downloads.tvBox')}
             </Button>
           </div>
           <div className="flex flex-col items-center p-3 md:p-4 rounded-xl border-2 border-emerald-100 hover:border-emerald-300 transition-colors">
@@ -35,7 +40,7 @@ export default function Downloads() {
               className="w-full md:w-auto border-emerald-500 text-emerald-600 hover:bg-emerald-50"
               onClick={handleDownloadAndroid}
             >
-              Celular Android
+              {t('downloads.android')}
             </Button>
           </div>
         </div>
