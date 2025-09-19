@@ -20,69 +20,13 @@
     
     <!-- Critical resource preloading with high priority -->
     <link rel="modulepreload" href="/src/main.tsx" fetchpriority="high">
-    <link rel="preload" href="/src/index.css" as="style" fetchpriority="high" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="/src/index.css"></noscript>
     <link rel="preload" href="/src/App.tsx" as="script" crossorigin fetchpriority="high">
     <link rel="preload" href="/lovable-uploads/717a228b-ebde-4d63-bf4d-3bcdcbb96089.png" as="image" fetchpriority="low">
     
-    <!-- Optimized async CSS loading to break critical path -->
-    <script>
-      // Enhanced CSS loading with immediate execution
-      (function() {
-        'use strict';
-        var loadCSS = function(href, before, media) {
-          var doc = document;
-          var ss = doc.createElement('link');
-          var ref;
-          if (before) {
-            ref = before;
-          } else {
-            var refs = (doc.body || doc.getElementsByTagName('head')[0]).childNodes;
-            ref = refs[refs.length - 1];
-          }
-          var sheets = doc.styleSheets;
-          ss.rel = 'stylesheet';
-          ss.href = href;
-          ss.media = 'only x';
-          function ready(cb) {
-            if (doc.body) {
-              return cb();
-            }
-            setTimeout(function() {
-              ready(cb);
-            });
-          }
-          ready(function() {
-            ref.parentNode.insertBefore(ss, (before ? ref : ref.nextSibling));
-          });
-          var onloadcssdefined = function(cb) {
-            var resolvedHref = ss.href;
-            var i = sheets.length;
-            while (i--) {
-              if (sheets[i].href === resolvedHref) {
-                return cb();
-              }
-            }
-            setTimeout(function() {
-              onloadcssdefined(cb);
-            });
-          };
-          function loadCB() {
-            if (ss.addEventListener) {
-              ss.removeEventListener('load', loadCB);
-            }
-            ss.media = media || 'all';
-          }
-          if (ss.addEventListener) {
-            ss.addEventListener('load', loadCB);
-          }
-          ss.onloadcssdefined = onloadcssdefined;
-          onloadcssdefined(loadCB);
-          return ss;
-        };
-        loadCSS('/src/index.css');
-      })();
-    </script>
+    <!-- Non-blocking CSS loading -->
+    <link rel="preload" href="/src/index.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" href="/src/index.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="/src/index.css"></noscript>
     
     <link rel="icon" href="/lovable-uploads/717a228b-ebde-4d63-bf4d-3bcdcbb96089.png" type="image/png">
 
