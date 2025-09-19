@@ -8,9 +8,15 @@
     <meta name="description" content="Compre sua recarga de cinema online" />
     <meta name="author" content="Lovable" />
 
-    <!-- Cache optimization hints -->
-    <meta http-equiv="Cache-Control" content="public, max-age=3600">
-    <meta http-equiv="Expires" content="3600">
+    <!-- Enhanced cache optimization hints -->
+    <meta http-equiv="Cache-Control" content="public, max-age=31536000, immutable">
+    <meta http-equiv="Pragma" content="cache">
+    <meta http-equiv="Expires" content="31536000">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    
+    <!-- Service worker registration hints -->
+    <link rel="manifest" href="data:application/manifest+json,{}">
+    <meta name="theme-color" content="#1a1a1a">
 
     <!-- Priority resource hints for performance optimization -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
