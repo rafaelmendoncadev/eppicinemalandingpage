@@ -1,12 +1,14 @@
 
+import { Suspense, lazy } from "react";
 import Hero from "@/components/Hero";
 import HowItWorks from "@/components/HowItWorks";
-import Downloads from "@/components/Downloads";
-import Pricing from "@/components/Pricing";
-import WhyBuyHere from "@/components/WhyBuyHere";
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+
+const Downloads = lazy(() => import("@/components/Downloads"));
+const Pricing = lazy(() => import("@/components/Pricing"));
+const WhyBuyHere = lazy(() => import("@/components/WhyBuyHere"));
+const Footer = lazy(() => import("@/components/Footer"));
 
 export default function Index() {
   return (
@@ -18,15 +20,21 @@ export default function Index() {
       <div id="how-it-works">
         <HowItWorks />
       </div>
-      <div id="downloads">
-        <Downloads />
-      </div>
-      <div id="pricing">
-        <Pricing />
-      </div>
-      <div id="why-buy-here">
-        <WhyBuyHere />
-      </div>
+      <Suspense fallback={<div className="h-32 animate-pulse bg-gradient-to-r from-gray-200 to-gray-300 rounded-lg mx-4"></div>}>
+        <div id="downloads">
+          <Downloads />
+        </div>
+      </Suspense>
+      <Suspense fallback={<div className="h-32 animate-pulse bg-gradient-to-r from-gray-200 to-gray-300 rounded-lg mx-4"></div>}>
+        <div id="pricing">
+          <Pricing />
+        </div>
+      </Suspense>
+      <Suspense fallback={<div className="h-32 animate-pulse bg-gradient-to-r from-gray-200 to-gray-300 rounded-lg mx-4"></div>}>
+        <div id="why-buy-here">
+          <WhyBuyHere />
+        </div>
+      </Suspense>
       <FloatingWhatsApp />
       <div className="w-full py-3 bg-gradient-to-br from-gray-900 via-purple-900 to-blue-900 text-white">
         <div className="container mx-auto px-4">
@@ -35,7 +43,9 @@ export default function Index() {
           </div>
         </div>
       </div>
-      <Footer />
+      <Suspense fallback={<div className="h-16 animate-pulse bg-gradient-to-r from-gray-200 to-gray-300 rounded-lg mx-4"></div>}>
+        <Footer />
+      </Suspense>
     </main>
   );
 }
