@@ -1,13 +1,13 @@
 
 import { Suspense, lazy } from "react";
 import Hero from "@/components/Hero";
-import HowItWorks from "@/components/HowItWorks";
 import Navbar from "@/components/Navbar";
-import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 
+const HowItWorks = lazy(() => import("@/components/HowItWorks"));
 const Downloads = lazy(() => import("@/components/Downloads"));
 const Pricing = lazy(() => import("@/components/Pricing"));
 const WhyBuyHere = lazy(() => import("@/components/WhyBuyHere"));
+const FloatingWhatsApp = lazy(() => import("@/components/FloatingWhatsApp"));
 const Footer = lazy(() => import("@/components/Footer"));
 
 export default function Index() {
@@ -17,9 +17,11 @@ export default function Index() {
       <div id="hero">
         <Hero />
       </div>
-      <div id="how-it-works">
-        <HowItWorks />
-      </div>
+      <Suspense fallback={<div className="h-32 animate-pulse bg-gradient-to-r from-gray-200 to-gray-300 rounded-lg mx-4"></div>}>
+        <div id="how-it-works">
+          <HowItWorks />
+        </div>
+      </Suspense>
       <Suspense fallback={<div className="h-32 animate-pulse bg-gradient-to-r from-gray-200 to-gray-300 rounded-lg mx-4"></div>}>
         <div id="downloads">
           <Downloads />
@@ -35,7 +37,9 @@ export default function Index() {
           <WhyBuyHere />
         </div>
       </Suspense>
-      <FloatingWhatsApp />
+      <Suspense fallback={<div className="fixed bottom-4 right-4 w-14 h-14 animate-pulse bg-gradient-to-r from-green-200 to-green-300 rounded-full"></div>}>
+        <FloatingWhatsApp />
+      </Suspense>
       <div className="w-full py-3 bg-gradient-to-br from-gray-900 via-purple-900 to-blue-900 text-white">
         <div className="container mx-auto px-4">
           <div className="text-xs text-center">
