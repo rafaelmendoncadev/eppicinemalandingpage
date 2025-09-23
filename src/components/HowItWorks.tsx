@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShoppingCart, CreditCard, Play, CheckCircle } from 'lucide-react';
+import { ShoppingCart, CreditCard, Play } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const HowItWorks = () => {

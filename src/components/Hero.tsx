@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Button } from "@/components/ui/button";
-import { Check, Shield, Users, Zap } from "lucide-react";
+import { Shield, Users, Zap } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const Hero = () => {

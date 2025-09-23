@@ -2,8 +2,8 @@
 import { Suspense, lazy } from "react";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
-import HowItWorks from "@/components/HowItWorks";
 
+const HowItWorks = lazy(() => import("@/components/HowItWorks"));
 const Downloads = lazy(() => import("@/components/Downloads"));
 const Pricing = lazy(() => import("@/components/Pricing"));
 const WhyBuyHere = lazy(() => import("@/components/WhyBuyHere"));
@@ -17,9 +17,11 @@ export default function Index() {
       <div id="hero">
         <Hero />
       </div>
-      <div id="how-it-works">
-        <HowItWorks />
-      </div>
+      <Suspense fallback={<div className="h-32 animate-pulse bg-gradient-to-r from-gray-200 to-gray-300 rounded-lg mx-4"></div>}>
+        <div id="how-it-works">
+          <HowItWorks />
+        </div>
+      </Suspense>
       <Suspense fallback={<div className="h-32 animate-pulse bg-gradient-to-r from-gray-200 to-gray-300 rounded-lg mx-4"></div>}>
         <div id="downloads">
           <Downloads />
