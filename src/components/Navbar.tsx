@@ -26,22 +26,26 @@ export default function Navbar() {
             <img 
               src="/eppi-cinema-logo.png" 
               alt="Eppi Cinema Logo" 
-              className="h-6 w-6 md:h-8 md:w-8"
+              className="h-6 w-6 md:h-8 md:w-8 object-contain object-center"
               loading="eager"
               fetchPriority="high"
               width="32"
               height="32"
               decoding="async"
+              sizes="(max-width: 768px) 24px, 32px"
+              style={{ maxWidth: '32px', maxHeight: '32px' }}
             />
             <img 
               src="/nossa-tv-logo.png" 
               alt="NossaTV Logo" 
-              className="h-6 w-auto md:h-8 md:w-auto"
+              className="h-6 w-auto md:h-8 md:w-auto object-contain object-center"
               loading="eager"
               fetchPriority="high"
               width="37"
               height="32"
               decoding="async"
+              sizes="(max-width: 768px) 24px, 32px"
+              style={{ maxWidth: '37px', maxHeight: '32px' }}
             />
           </div>
           <span className="text-base md:text-lg font-bold bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">{t('nav.brandName')}</span>
