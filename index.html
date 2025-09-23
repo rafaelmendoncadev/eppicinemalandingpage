@@ -24,10 +24,18 @@
     <link rel="preconnect" href="https://cdn.gpteng.co">
     <link rel="dns-prefetch" href="https://eppicinemalandingpage.lovable.app">
     
-    <!-- Critical resource preloading with high priority -->
+    <!-- Critical resource preloading with high priority and cache optimization -->
     <link rel="modulepreload" href="/src/main.tsx" fetchpriority="high">
     <link rel="preload" href="/src/App.tsx" as="script" crossorigin fetchpriority="high">
-    <link rel="preload" href="/lovable-uploads/717a228b-ebde-4d63-bf4d-3bcdcbb96089.png" as="image" fetchpriority="low">
+    
+    <!-- Critical images with cache optimization -->
+    <link rel="preload" href="/eppi-cinema-logo.png" as="image" fetchpriority="high" crossorigin="anonymous">
+    <link rel="preload" href="/nossa-tv-logo.png" as="image" fetchpriority="high" crossorigin="anonymous">
+    <link rel="preload" href="/lovable-uploads/717a228b-ebde-4d63-bf4d-3bcdcbb96089.png" as="image" fetchpriority="low" crossorigin="anonymous">
+    
+    <!-- Prefetch static assets for better caching -->
+    <link rel="prefetch" href="/eppi-cinema-logo.png" as="image">
+    <link rel="prefetch" href="/nossa-tv-logo.png" as="image">
     
     <!-- Non-blocking CSS loading -->
     <link rel="preload" href="/src/index.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
