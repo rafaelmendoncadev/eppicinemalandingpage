@@ -22,61 +22,23 @@ export default function Navbar() {
     <nav className="sticky top-0 z-50 w-full bg-gradient-to-r from-gray-900/95 via-purple-900/95 to-blue-900/95 backdrop-blur-md border-b border-gray-700/50">
       <div className="container mx-auto px-4 flex items-center justify-between h-16">
         <div className="flex items-center">
-          <div className="flex items-center gap-1 mr-2 md:mr-4">
-            <picture>
-              <source 
-                srcSet="/eppi-cinema-32x32.webp" 
-                type="image/webp"
-                media="(max-width: 768px)"
-                sizes="24px"
-              />
-              <source 
-                srcSet="/eppi-cinema-32x32.webp" 
-                type="image/webp"
-                sizes="32px"
-              />
-              <img 
-                src="/eppi-cinema-32x32.webp" 
-                alt="Eppi Cinema Logo" 
-                className="h-6 w-6 md:h-8 md:w-8 object-contain object-center"
-                loading="eager"
-                fetchPriority="high"
-                width="32"
-                height="32"
-                decoding="async"
-                onError={(e) => {
-                  e.currentTarget.src = '/eppi-cinema-logo.png';
-                }}
-                style={{ maxWidth: '32px', maxHeight: '32px' }}
-              />
-            </picture>
-            <picture>
-              <source 
-                srcSet="/nossa-tv-32x32.webp" 
-                type="image/webp"
-                media="(max-width: 768px)"
-                sizes="24px"
-              />
-              <source 
-                srcSet="/nossa-tv-32x32.webp" 
-                type="image/webp"
-                sizes="32px"
-              />
-              <img 
-                src="/nossa-tv-32x32.webp" 
-                alt="NossaTV Logo" 
-                className="h-6 w-auto md:h-8 md:w-auto object-contain object-center"
-                loading="eager"
-                fetchPriority="high"
-                width="37"
-                height="32"
-                decoding="async"
-                onError={(e) => {
-                  e.currentTarget.src = '/nossa-tv-logo.png';
-                }}
-                style={{ maxWidth: '37px', maxHeight: '32px' }}
-              />
-            </picture>
+          <div className="flex items-center gap-2 mr-4">
+            <img 
+              src="/eppi-cinema-logo-optimized.webp" 
+              alt="Eppi Cinema Logo" 
+              className="h-8 w-auto object-contain"
+              onError={(e) => {
+                e.currentTarget.src = '/eppi-cinema-logo.png';
+              }}
+            />
+            <img 
+              src="/nossa-tv-logo-optimized.webp" 
+              alt="NossaTV Logo" 
+              className="h-8 w-auto object-contain"
+              onError={(e) => {
+                e.currentTarget.src = '/nossa-tv-logo.png';
+              }}
+            />
           </div>
           <span className="text-base md:text-lg font-bold bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">{t('nav.brandName')}</span>
         </div>
