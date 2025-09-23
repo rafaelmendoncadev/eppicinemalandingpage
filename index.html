@@ -74,6 +74,41 @@
         --border: 217.2 32.6% 17.5%;
       }
       
+      /* Performance optimizations to prevent forced reflows */
+      * {
+        contain: layout style;
+      }
+      
+      #root {
+        contain: layout style paint;
+        isolation: isolate;
+      }
+      
+      /* Optimize common layout-triggering elements */
+      nav, header, main, section, aside, footer {
+        contain: layout style;
+      }
+      
+      /* Promote frequently changing elements to their own layer */
+      .transform, [class*="transform"], [class*="translate"], [class*="scale"], [class*="rotate"] {
+        will-change: transform;
+        transform: translateZ(0);
+      }
+      
+      /* Optimize buttons and interactive elements */
+      button, a, [role="button"] {
+        contain: layout style;
+        transform: translateZ(0);
+      }
+      
+      /* Prevent layout shifts from images */
+      img {
+        contain: layout style;
+        display: block;
+        max-width: 100%;
+        height: auto;
+      }
+      
       /* Critical layout styles */
       .container { width: 100%; margin: 0 auto; padding: 0 1rem; }
       .flex { display: flex; }
