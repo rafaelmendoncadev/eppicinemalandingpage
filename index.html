@@ -9,7 +9,7 @@
     <meta name="author" content="Lovable" />
 
     <!-- Enhanced cache optimization hints for better resource caching -->
-    <meta http-equiv="Cache-Control" content="public, max-age=31536000, stale-while-revalidate=604800">
+    <meta http-equiv="Cache-Control" content="public, max-age=31536000, stale-while-revalidate=604800, immutable">
     <meta http-equiv="Pragma" content="cache">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     
@@ -21,10 +21,10 @@
     <link rel="manifest" href="data:application/manifest+json,{&quot;name&quot;:&quot;Eppi Cinema&quot;,&quot;short_name&quot;:&quot;EppiCinema&quot;,&quot;display&quot;:&quot;standalone&quot;,&quot;background_color&quot;:&quot;#1a1a1a&quot;,&quot;theme_color&quot;:&quot;#1a1a1a&quot;,&quot;icons&quot;:[{&quot;src&quot;:&quot;/lovable-uploads/717a228b-ebde-4d63-bf4d-3bcdcbb96089.png&quot;,&quot;sizes&quot;:&quot;512x512&quot;,&quot;type&quot;:&quot;image/png&quot;}]}">
     <meta name="theme-color" content="#1a1a1a">
     
-    <!-- Cache optimization script for static assets -->
+    <!-- Comprehensive cache optimization script for all static assets -->
     <script>
       if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('data:application/javascript,const CACHE_NAME="eppi-cache-v1";const urlsToCache=["/eppi-cinema-logo.png","/nossa-tv-logo.png","/lovable-uploads/717a228b-ebde-4d63-bf4d-3bcdcbb96089.png"];self.addEventListener("install",e=>{e.waitUntil(caches.open(CACHE_NAME).then(cache=>cache.addAll(urlsToCache)))});self.addEventListener("fetch",e=>{e.respondWith(caches.match(e.request).then(response=>response||fetch(e.request)))});').catch(()=>{});
+        navigator.serviceWorker.register('data:application/javascript,const CACHE_NAME="eppi-cache-v2";const urlsToCache=["/eppi-cinema-logo.png","/nossa-tv-logo.png","/lovable-uploads/717a228b-ebde-4d63-bf4d-3bcdcbb96089.png"];self.addEventListener("install",e=>{e.waitUntil(caches.open(CACHE_NAME).then(cache=>cache.addAll(urlsToCache)))});self.addEventListener("fetch",e=>{if(e.request.url.includes(".png")||e.request.url.includes(".js")||e.request.url.includes(".css")||e.request.url.includes("/assets/")){e.respondWith(caches.open(CACHE_NAME).then(cache=>cache.match(e.request).then(response=>{if(response){return response;}return fetch(e.request).then(networkResponse=>{cache.put(e.request,networkResponse.clone());return networkResponse;});}).catch(()=>fetch(e.request))));}});').catch(()=>{});
       }
     </script>
 
@@ -61,22 +61,59 @@
     <link rel="prefetch" href="/eppi-cinema-32x32.webp" as="image" type="image/webp">
     <link rel="prefetch" href="/nossa-tv-32x32.webp" as="image" type="image/webp">
     
-    <!-- Cache optimization for static assets -->
+    <!-- Comprehensive cache optimization for all static assets -->
     <script>
-      // Add cache headers to resource requests
+      // Add cache headers to ALL resource requests immediately
       if ('fetch' in window) {
         const originalFetch = window.fetch;
         window.fetch = function(...args) {
           const [resource, config = {}] = args;
-          if (typeof resource === 'string' && (
-            resource.includes('.png') || 
-            resource.includes('.js') || 
-            resource.includes('.css') ||
-            resource.includes('/assets/')
-          )) {
-            config.cache = config.cache || 'force-cache';
+          
+          // Force cache for ALL static assets
+          if (typeof resource === 'string') {
+            const isStaticAsset = resource.includes('.png') || 
+                                resource.includes('.jpg') || 
+                                resource.includes('.jpeg') || 
+                                resource.includes('.webp') || 
+                                resource.includes('.js') || 
+                                resource.includes('.css') ||
+                                resource.includes('/assets/') ||
+                                resource.includes('/lovable-uploads/');
+                                
+            if (isStaticAsset) {
+              // Force aggressive caching
+              config.cache = 'force-cache';
+              config.headers = config.headers || {};
+              config.headers['Cache-Control'] = 'public, max-age=31536000, immutable';
+            }
           }
+          
           return originalFetch(resource, config);
+        };
+      }
+      
+      // Override XMLHttpRequest for additional cache control
+      if ('XMLHttpRequest' in window) {
+        const originalOpen = XMLHttpRequest.prototype.open;
+        XMLHttpRequest.prototype.open = function(method, url, ...args) {
+          const result = originalOpen.call(this, method, url, ...args);
+          
+          if (typeof url === 'string') {
+            const isStaticAsset = url.includes('.png') || 
+                                 url.includes('.jpg') || 
+                                 url.includes('.jpeg') || 
+                                 url.includes('.webp') || 
+                                 url.includes('.js') || 
+                                 url.includes('.css') ||
+                                 url.includes('/assets/') ||
+                                 url.includes('/lovable-uploads/');
+                                 
+            if (isStaticAsset) {
+              this.setRequestHeader('Cache-Control', 'public, max-age=31536000, immutable');
+            }
+          }
+          
+          return result;
         };
       }
     </script>
