@@ -110,26 +110,45 @@
     <!-- Async CSS loading with JavaScript fallback -->
     <script>
       (function() {
-        function loadCSS(href) {
+        // Create non-blocking CSS loader
+        function loadCSS(href, media) {
           var css = document.createElement('link');
           css.rel = 'stylesheet';
           css.href = href;
-          css.media = 'print';
-          css.onload = function() { this.media = 'all'; };
+          css.media = media || 'print';
+          css.onload = function() { 
+            this.media = 'all'; 
+            this.onload = null; 
+          };
+          css.onerror = function() {
+            // Fallback to synchronous loading if async fails
+            var fallback = document.createElement('link');
+            fallback.rel = 'stylesheet';
+            fallback.href = href;
+            document.head.appendChild(fallback);
+          };
           document.head.appendChild(css);
+          return css;
         }
         
-        // Load main CSS asynchronously
-        loadCSS('/src/index.css');
+        // Load CSS asynchronously - try both development and production paths
+        var devCSS = '/src/index.css';
+        var prodCSS = document.querySelector('link[href*="/assets/index-"][href$=".css"]');
         
-        // Preload for faster subsequent loads
-        var preload = document.createElement('link');
-        preload.rel = 'preload';
-        preload.as = 'style';
-        preload.href = '/src/index.css';
-        document.head.appendChild(preload);
+        if (prodCSS) {
+          // Production build - replace existing CSS link with async version
+          var href = prodCSS.href;
+          prodCSS.remove();
+          loadCSS(href);
+        } else {
+          // Development build
+          loadCSS(devCSS);
+        }
       })();
     </script>
+    
+    <!-- Enhanced preload strategy -->
+    <link rel="preload" href="/src/index.css" as="style" onload="this.onload=null;this.rel='stylesheet'" media="print">
     
     <!-- Fallback for no-JS -->
     <noscript><link rel="stylesheet" href="/src/index.css"></noscript>
