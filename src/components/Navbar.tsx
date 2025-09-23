@@ -23,46 +23,26 @@ export default function Navbar() {
       <div className="container mx-auto px-4 flex items-center justify-between h-16">
         <div className="flex items-center">
           <div className="flex items-center gap-2 mr-4">
-            <picture>
-              <source 
-                srcSet="/eppi-cinema-logo-optimized.webp" 
-                type="image/webp"
-                sizes="128px"
-              />
-              <img 
-                src="/eppi-cinema-logo.png" 
-                alt="Eppi Cinema Logo" 
-                className="h-8 w-auto object-contain"
-                loading="eager"
-                fetchPriority="high"
-                width="128"
-                height="32"
-                decoding="async"
-                onError={(e) => {
-                  e.currentTarget.src = '/eppi-cinema-logo.png';
-                }}
-              />
-            </picture>
-            <picture>
-              <source 
-                srcSet="/nossa-tv-logo-optimized.webp" 
-                type="image/webp"
-                sizes="148px"
-              />
-              <img 
-                src="/nossa-tv-logo.png" 
-                alt="NossaTV Logo" 
-                className="h-8 w-auto object-contain"
-                loading="eager"
-                fetchPriority="high"
-                width="148"
-                height="32"
-                decoding="async"
-                onError={(e) => {
-                  e.currentTarget.src = '/nossa-tv-logo.png';
-                }}
-              />
-            </picture>
+            <img 
+              src="/eppi-cinema-logo.png" 
+              alt="Eppi Cinema Logo" 
+              className="h-8 w-auto object-contain"
+              loading="eager"
+              fetchPriority="high"
+              width="128"
+              height="32"
+              decoding="async"
+            />
+            <img 
+              src="/nossa-tv-logo.png" 
+              alt="NossaTV Logo" 
+              className="h-8 w-auto object-contain"
+              loading="eager"
+              fetchPriority="high"
+              width="148"
+              height="32"
+              decoding="async"
+            />
           </div>
           <span className="text-base md:text-lg font-bold bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">{t('nav.brandName')}</span>
         </div>
