@@ -8,10 +8,9 @@
     <meta name="description" content="Compre sua recarga de cinema online" />
     <meta name="author" content="Lovable" />
 
-    <!-- Enhanced cache optimization hints -->
-    <meta http-equiv="Cache-Control" content="public, max-age=31536000, immutable">
+    <!-- Enhanced cache optimization hints for better resource caching -->
+    <meta http-equiv="Cache-Control" content="public, max-age=31536000, stale-while-revalidate=604800">
     <meta http-equiv="Pragma" content="cache">
-    <meta http-equiv="Expires" content="31536000">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     
     <!-- Service worker registration hints -->
@@ -24,27 +23,31 @@
     <link rel="preconnect" href="https://cdn.gpteng.co">
     <link rel="dns-prefetch" href="https://eppicinemalandingpage.lovable.app">
     
-    <!-- Critical resource preloading with high priority and cache optimization -->
-    <link rel="modulepreload" href="/src/main.tsx" fetchpriority="high">
+    <!-- Critical resource preloading with cache optimization -->
+    <link rel="modulepreload" href="/src/main.tsx" fetchpriority="high" crossorigin>
     <link rel="preload" href="/src/App.tsx" as="script" crossorigin fetchpriority="high">
     
-    <!-- Modulepreload hints for lazy-loaded chunks to reduce dependency chains -->
-    <link rel="modulepreload" href="/assets/HowItWorks-AmdCp4Z9.js" fetchpriority="high">
-    <link rel="modulepreload" href="/assets/Pricing-DLiOfTB4.js" fetchpriority="medium">
-    <link rel="modulepreload" href="/assets/WhyBuyHere-DtPzNHTy.js" fetchpriority="medium">
-    <link rel="modulepreload" href="/assets/Downloads-B2QHt_a7.js" fetchpriority="low">
-    <link rel="modulepreload" href="/assets/FloatingWhatsApp-8kdl7Rls.js" fetchpriority="low">
-    <link rel="modulepreload" href="/assets/Footer-Cz7-evi3.js" fetchpriority="low">
-    <link rel="modulepreload" href="/assets/star-B5_zoy4Z.js" fetchpriority="low">
+    <!-- Preload main CSS and JS assets with cache hints -->
+    <link rel="preload" href="/assets/index-D3bDqBN7.css" as="style" fetchpriority="high" crossorigin>
+    <link rel="modulepreload" href="/assets/index-DZ3H1UiK.js" fetchpriority="high" crossorigin>
     
-    <!-- Critical images with cache optimization -->
-    <link rel="preload" href="/eppi-cinema-32x32.webp" as="image" fetchpriority="high" crossorigin="anonymous" type="image/webp">
-    <link rel="preload" href="/nossa-tv-32x32.webp" as="image" fetchpriority="high" crossorigin="anonymous" type="image/webp">
-    <link rel="preload" href="/lovable-uploads/717a228b-ebde-4d63-bf4d-3bcdcbb96089.png" as="image" fetchpriority="low" crossorigin="anonymous">
+    <!-- Modulepreload hints for lazy-loaded chunks with cache optimization -->
+    <link rel="modulepreload" href="/assets/HowItWorks-AmdCp4Z9.js" fetchpriority="medium" crossorigin>
+    <link rel="modulepreload" href="/assets/Pricing-DLiOfTB4.js" fetchpriority="medium" crossorigin>
+    <link rel="modulepreload" href="/assets/WhyBuyHere-DtPzNHTy.js" fetchpriority="medium" crossorigin>
+    <link rel="modulepreload" href="/assets/Downloads-B2QHt_a7.js" fetchpriority="low" crossorigin>
+    <link rel="modulepreload" href="/assets/FloatingWhatsApp-8kdl7Rls.js" fetchpriority="low" crossorigin>
+    <link rel="modulepreload" href="/assets/Footer-Cz7-evi3.js" fetchpriority="low" crossorigin>
+    <link rel="modulepreload" href="/assets/star-B5_zoy4Z.js" fetchpriority="low" crossorigin>
     
-    <!-- Prefetch fallback images for compatibility -->
-    <link rel="prefetch" href="/eppi-cinema-logo.png" as="image">
-    <link rel="prefetch" href="/nossa-tv-logo.png" as="image">
+    <!-- Critical images with long-term caching hints -->
+    <link rel="preload" href="/eppi-cinema-logo.png" as="image" fetchpriority="high" crossorigin type="image/png">
+    <link rel="preload" href="/nossa-tv-logo.png" as="image" fetchpriority="high" crossorigin type="image/png">
+    <link rel="preload" href="/lovable-uploads/717a228b-ebde-4d63-bf4d-3bcdcbb96089.png" as="image" fetchpriority="medium" crossorigin type="image/png">
+    
+    <!-- Prefetch WebP optimized images for future use -->
+    <link rel="prefetch" href="/eppi-cinema-32x32.webp" as="image" type="image/webp">
+    <link rel="prefetch" href="/nossa-tv-32x32.webp" as="image" type="image/webp">
     
     <!-- Critical CSS inlined for fastest rendering -->
     <style>
