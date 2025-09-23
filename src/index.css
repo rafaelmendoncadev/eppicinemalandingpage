@@ -98,4 +98,18 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  /* Performance optimizations to prevent forced reflows */
+  [class*="hover:scale-"] {
+    will-change: transform;
+    transform: translateZ(0);
+  }
+
+  [class*="hover:shadow-"] {
+    will-change: box-shadow;
+  }
+
+  [class*="transition-"] {
+    transform: translateZ(0);
+  }
 }
