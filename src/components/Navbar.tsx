@@ -25,7 +25,7 @@ export default function Navbar() {
           <div className="flex items-center gap-1 mr-2 md:mr-4">
             <picture>
               <source 
-                srcSet="/eppi-cinema-logo-optimized.webp" 
+                srcSet="/eppi-cinema-32x32.webp" 
                 type="image/webp"
                 sizes="(max-width: 768px) 24px, 32px"
               />
@@ -44,7 +44,7 @@ export default function Navbar() {
             </picture>
             <picture>
               <source 
-                srcSet="/nossa-tv-logo-optimized.webp" 
+                srcSet="/nossa-tv-32x32.webp" 
                 type="image/webp"
                 sizes="(max-width: 768px) 24px, 32px"
               />
