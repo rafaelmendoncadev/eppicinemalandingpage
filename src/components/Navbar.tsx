@@ -27,10 +27,16 @@ export default function Navbar() {
               <source 
                 srcSet="/eppi-cinema-32x32.webp" 
                 type="image/webp"
-                sizes="(max-width: 768px) 24px, 32px"
+                media="(max-width: 768px)"
+                sizes="24px"
+              />
+              <source 
+                srcSet="/eppi-cinema-32x32.webp" 
+                type="image/webp"
+                sizes="32px"
               />
               <img 
-                src="/eppi-cinema-logo.png" 
+                src="/eppi-cinema-32x32.webp" 
                 alt="Eppi Cinema Logo" 
                 className="h-6 w-6 md:h-8 md:w-8 object-contain object-center"
                 loading="eager"
@@ -38,7 +44,9 @@ export default function Navbar() {
                 width="32"
                 height="32"
                 decoding="async"
-                sizes="(max-width: 768px) 24px, 32px"
+                onError={(e) => {
+                  e.currentTarget.src = '/eppi-cinema-logo.png';
+                }}
                 style={{ maxWidth: '32px', maxHeight: '32px' }}
               />
             </picture>
@@ -46,10 +54,16 @@ export default function Navbar() {
               <source 
                 srcSet="/nossa-tv-32x32.webp" 
                 type="image/webp"
-                sizes="(max-width: 768px) 24px, 32px"
+                media="(max-width: 768px)"
+                sizes="24px"
+              />
+              <source 
+                srcSet="/nossa-tv-32x32.webp" 
+                type="image/webp"
+                sizes="32px"
               />
               <img 
-                src="/nossa-tv-logo.png" 
+                src="/nossa-tv-32x32.webp" 
                 alt="NossaTV Logo" 
                 className="h-6 w-auto md:h-8 md:w-auto object-contain object-center"
                 loading="eager"
@@ -57,7 +71,9 @@ export default function Navbar() {
                 width="37"
                 height="32"
                 decoding="async"
-                sizes="(max-width: 768px) 24px, 32px"
+                onError={(e) => {
+                  e.currentTarget.src = '/nossa-tv-logo.png';
+                }}
                 style={{ maxWidth: '37px', maxHeight: '32px' }}
               />
             </picture>
