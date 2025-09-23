@@ -114,8 +114,26 @@
     <!-- Async CSS loading with JavaScript fallback -->
     <script>
       (function() {
-        // Create non-blocking CSS loader with improved performance
-        function loadCSS(href, media, onLoadCallback) {
+        // Immediately prevent any synchronous CSS loading
+        var observer = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            mutation.addedNodes.forEach(function(node) {
+              if (node.tagName === 'LINK' && node.rel === 'stylesheet' && 
+                  (node.href.includes('/assets/index-') || node.href.includes('/src/index.css'))) {
+                // Convert synchronous CSS to async
+                node.media = 'print';
+                node.onload = function() { 
+                  this.media = 'all'; 
+                  this.onload = null; 
+                };
+              }
+            });
+          });
+        });
+        observer.observe(document.head, { childList: true });
+        
+        // Create non-blocking CSS loader
+        function loadCSS(href, media) {
           var css = document.createElement('link');
           css.rel = 'stylesheet';
           css.href = href;
@@ -123,47 +141,27 @@
           css.onload = function() { 
             this.media = 'all'; 
             this.onload = null;
-            if (onLoadCallback) onLoadCallback();
           };
           css.onerror = function() {
-            // Silently handle errors to prevent blocking
             this.remove();
           };
           document.head.appendChild(css);
           return css;
         }
         
-        // Immediately load CSS asynchronously - detect production build CSS
-        var existingCSS = document.querySelector('link[href*="/assets/index-"][href$=".css"]');
+        // Load CSS asynchronously
         var devCSS = '/src/index.css';
-        var prodCSSPattern = /\/assets\/index-[^\/]+\.css$/;
+        var prodCSS = '/assets/index-D3bDqBN7.css';
         
-        // Check if we're in production by looking for hashed CSS files
-        var scripts = document.getElementsByTagName('script');
-        var prodCSS = null;
-        
-        for (var i = 0; i < scripts.length; i++) {
-          var src = scripts[i].src;
-          if (src && src.includes('/assets/index-') && src.endsWith('.js')) {
-            // Derive CSS filename from JS filename
-            prodCSS = src.replace(/\/assets\/index-([^\/]+)\.js$/, '/assets/index-$1.css');
-            prodCSS = prodCSS.replace(/\.js$/, '.css');
-            break;
-          }
-        }
-        
-        if (existingCSS) {
-          // Remove any existing synchronous CSS to prevent render blocking
-          var href = existingCSS.href;
-          existingCSS.remove();
-          loadCSS(href);
-        } else if (prodCSS) {
-          // Try to load production CSS
-          loadCSS(prodCSS);
-        } else {
-          // Development fallback
+        // Try production CSS first, fallback to dev
+        var css = loadCSS(prodCSS);
+        css.onerror = function() {
+          this.remove();
           loadCSS(devCSS);
-        }
+        };
+        
+        // Stop observing after initial load
+        setTimeout(function() { observer.disconnect(); }, 1000);
       })();
     </script>
     
