@@ -180,13 +180,29 @@
     <!-- Async CSS loading with JavaScript fallback -->
     <script>
       (function() {
-        // Immediately prevent any synchronous CSS loading
+        // Prevent ALL synchronous CSS loading immediately
+        var originalCreateElement = document.createElement;
+        document.createElement = function(tagName) {
+          var element = originalCreateElement.call(document, tagName);
+          if (tagName.toLowerCase() === 'link') {
+            var originalSetAttribute = element.setAttribute;
+            element.setAttribute = function(name, value) {
+              if (name === 'rel' && value === 'stylesheet') {
+                // Force async loading for all stylesheets
+                originalSetAttribute.call(this, 'media', 'print');
+                originalSetAttribute.call(this, 'onload', 'this.media="all";this.onload=null;');
+              }
+              return originalSetAttribute.call(this, name, value);
+            };
+          }
+          return element;
+        };
+        
+        // Immediate DOM observer for any injected CSS
         var observer = new MutationObserver(function(mutations) {
           mutations.forEach(function(mutation) {
             mutation.addedNodes.forEach(function(node) {
-              if (node.tagName === 'LINK' && node.rel === 'stylesheet' && 
-                  (node.href.includes('/assets/index-') || node.href.includes('/src/index.css'))) {
-                // Convert synchronous CSS to async
+              if (node.tagName === 'LINK' && node.rel === 'stylesheet' && !node.media) {
                 node.media = 'print';
                 node.onload = function() { 
                   this.media = 'all'; 
@@ -196,38 +212,47 @@
             });
           });
         });
-        observer.observe(document.head, { childList: true });
+        observer.observe(document.head, { childList: true, subtree: true });
         
-        // Create non-blocking CSS loader
-        function loadCSS(href, media) {
+        // Enhanced CSS loader with error handling
+        function loadCSS(href) {
           var css = document.createElement('link');
           css.rel = 'stylesheet';
           css.href = href;
-          css.media = media || 'print';
+          css.media = 'print';
           css.onload = function() { 
             this.media = 'all'; 
             this.onload = null;
           };
-          css.onerror = function() {
-            this.remove();
-          };
+          css.onerror = function() { this.remove(); };
           document.head.appendChild(css);
           return css;
         }
         
-        // Load CSS asynchronously
-        var devCSS = '/src/index.css';
-        var prodCSS = '/assets/index-D3bDqBN7.css';
+        // Auto-detect and load CSS files
+        var scripts = document.querySelectorAll('script[src*="/assets/index-"]');
+        var cssLoaded = false;
         
-        // Try production CSS first, fallback to dev
-        var css = loadCSS(prodCSS);
-        css.onerror = function() {
-          this.remove();
-          loadCSS(devCSS);
-        };
+        if (scripts.length > 0) {
+          // Production: derive CSS from JS filename
+          var jsFile = scripts[0].src;
+          var cssFile = jsFile.replace(/\.js$/, '.css').replace(/index-[^\/]+\.js/, function(match) {
+            return match.replace('.js', '.css');
+          });
+          loadCSS(cssFile);
+          cssLoaded = true;
+        }
         
-        // Stop observing after initial load
-        setTimeout(function() { observer.disconnect(); }, 1000);
+        // Fallback for development
+        if (!cssLoaded) {
+          loadCSS('/src/index.css');
+        }
+        
+        // Clean up after page load
+        window.addEventListener('load', function() {
+          observer.disconnect();
+          document.createElement = originalCreateElement;
+        });
       })();
     </script>
     
