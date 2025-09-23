@@ -113,47 +113,60 @@
     <!-- Async CSS loading with JavaScript fallback -->
     <script>
       (function() {
-        // Create non-blocking CSS loader
-        function loadCSS(href, media) {
+        // Create non-blocking CSS loader with improved performance
+        function loadCSS(href, media, onLoadCallback) {
           var css = document.createElement('link');
           css.rel = 'stylesheet';
           css.href = href;
           css.media = media || 'print';
           css.onload = function() { 
             this.media = 'all'; 
-            this.onload = null; 
+            this.onload = null;
+            if (onLoadCallback) onLoadCallback();
           };
           css.onerror = function() {
-            // Fallback to synchronous loading if async fails
-            var fallback = document.createElement('link');
-            fallback.rel = 'stylesheet';
-            fallback.href = href;
-            document.head.appendChild(fallback);
+            // Silently handle errors to prevent blocking
+            this.remove();
           };
           document.head.appendChild(css);
           return css;
         }
         
-        // Load CSS asynchronously - try both development and production paths
+        // Immediately load CSS asynchronously - detect production build CSS
+        var existingCSS = document.querySelector('link[href*="/assets/index-"][href$=".css"]');
         var devCSS = '/src/index.css';
-        var prodCSS = document.querySelector('link[href*="/assets/index-"][href$=".css"]');
+        var prodCSSPattern = /\/assets\/index-[^\/]+\.css$/;
         
-        if (prodCSS) {
-          // Production build - replace existing CSS link with async version
-          var href = prodCSS.href;
-          prodCSS.remove();
+        // Check if we're in production by looking for hashed CSS files
+        var scripts = document.getElementsByTagName('script');
+        var prodCSS = null;
+        
+        for (var i = 0; i < scripts.length; i++) {
+          var src = scripts[i].src;
+          if (src && src.includes('/assets/index-') && src.endsWith('.js')) {
+            // Derive CSS filename from JS filename
+            prodCSS = src.replace(/\/assets\/index-([^\/]+)\.js$/, '/assets/index-$1.css');
+            prodCSS = prodCSS.replace(/\.js$/, '.css');
+            break;
+          }
+        }
+        
+        if (existingCSS) {
+          // Remove any existing synchronous CSS to prevent render blocking
+          var href = existingCSS.href;
+          existingCSS.remove();
           loadCSS(href);
+        } else if (prodCSS) {
+          // Try to load production CSS
+          loadCSS(prodCSS);
         } else {
-          // Development build
+          // Development fallback
           loadCSS(devCSS);
         }
       })();
     </script>
     
-    <!-- Enhanced preload strategy -->
-    <link rel="preload" href="/src/index.css" as="style" onload="this.onload=null;this.rel='stylesheet'" media="print">
-    
-    <!-- Fallback for no-JS -->
+    <!-- Fallback for no-JS environments -->
     <noscript><link rel="stylesheet" href="/src/index.css"></noscript>
     
     <link rel="icon" href="/lovable-uploads/717a228b-ebde-4d63-bf4d-3bcdcbb96089.png" type="image/png">
