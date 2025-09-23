@@ -34,23 +34,23 @@
     <link rel="preconnect" href="https://cdn.gpteng.co">
     <link rel="dns-prefetch" href="https://eppicinemalandingpage.lovable.app">
     
-    <!-- Critical resource preloading with optimized dependency chain -->
+    <!-- Critical resource preloading with optimized dependency chain breaking -->
     <link rel="modulepreload" href="/src/main.tsx" fetchpriority="high" crossorigin>
     <link rel="preload" href="/src/App.tsx" as="script" crossorigin fetchpriority="high">
     
-    <!-- Critical component chunks preloaded to break dependency chains -->
+    <!-- Main bundle with highest priority to break dependency chains -->
     <link rel="modulepreload" href="/assets/index-DZ3H1UiK.js" fetchpriority="high" crossorigin>
+    
+    <!-- Critical component chunks preloaded in parallel to break dependency chains -->
+    <link rel="modulepreload" href="/assets/Footer-Cz7-evi3.js" fetchpriority="high" crossorigin>
     <link rel="modulepreload" href="/assets/Pricing-DLiOfTB4.js" fetchpriority="high" crossorigin>
     <link rel="modulepreload" href="/assets/HowItWorks-AmdCp4Z9.js" fetchpriority="high" crossorigin>
+    <link rel="modulepreload" href="/assets/WhyBuyHere-DtPzNHTy.js" fetchpriority="high" crossorigin>
     
-    <!-- Secondary component chunks -->
-    <link rel="modulepreload" href="/assets/WhyBuyHere-DtPzNHTy.js" fetchpriority="medium" crossorigin>
+    <!-- Secondary component chunks with medium priority -->
     <link rel="modulepreload" href="/assets/Downloads-B2QHt_a7.js" fetchpriority="medium" crossorigin>
-    <link rel="modulepreload" href="/assets/Footer-Cz7-evi3.js" fetchpriority="medium" crossorigin>
-    
-    <!-- Non-critical component chunks -->
-    <link rel="modulepreload" href="/assets/FloatingWhatsApp-8kdl7Rls.js" fetchpriority="low" crossorigin>
-    <link rel="modulepreload" href="/assets/star-B5_zoy4Z.js" fetchpriority="low" crossorigin>
+    <link rel="modulepreload" href="/assets/FloatingWhatsApp-8kdl7Rls.js" fetchpriority="medium" crossorigin>
+    <link rel="modulepreload" href="/assets/star-B5_zoy4Z.js" fetchpriority="medium" crossorigin>
     
     <!-- Critical images with long-term caching hints and immutable attributes -->
     <link rel="preload" href="/eppi-cinema-logo.png" as="image" fetchpriority="high" crossorigin type="image/png" media="(max-width: 768px)">
