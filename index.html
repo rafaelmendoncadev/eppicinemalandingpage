@@ -13,9 +13,20 @@
     <meta http-equiv="Pragma" content="cache">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     
-    <!-- Service worker registration hints -->
-    <link rel="manifest" href="data:application/manifest+json,{}">
+    <!-- Static asset cache hints -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="preconnect" href="https://eppicinemalandingpage.lovable.app" crossorigin>
+    
+    <!-- Service worker registration hints for aggressive caching -->
+    <link rel="manifest" href="data:application/manifest+json,{&quot;name&quot;:&quot;Eppi Cinema&quot;,&quot;short_name&quot;:&quot;EppiCinema&quot;,&quot;display&quot;:&quot;standalone&quot;,&quot;background_color&quot;:&quot;#1a1a1a&quot;,&quot;theme_color&quot;:&quot;#1a1a1a&quot;,&quot;icons&quot;:[{&quot;src&quot;:&quot;/lovable-uploads/717a228b-ebde-4d63-bf4d-3bcdcbb96089.png&quot;,&quot;sizes&quot;:&quot;512x512&quot;,&quot;type&quot;:&quot;image/png&quot;}]}">
     <meta name="theme-color" content="#1a1a1a">
+    
+    <!-- Cache optimization script for static assets -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('data:application/javascript,const CACHE_NAME="eppi-cache-v1";const urlsToCache=["/eppi-cinema-logo.png","/nossa-tv-logo.png","/lovable-uploads/717a228b-ebde-4d63-bf4d-3bcdcbb96089.png"];self.addEventListener("install",e=>{e.waitUntil(caches.open(CACHE_NAME).then(cache=>cache.addAll(urlsToCache)))});self.addEventListener("fetch",e=>{e.respondWith(caches.match(e.request).then(response=>response||fetch(e.request)))});').catch(()=>{});
+      }
+    </script>
 
      <!-- Priority resource hints for performance optimization -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,14 +52,34 @@
     <link rel="modulepreload" href="/assets/FloatingWhatsApp-8kdl7Rls.js" fetchpriority="low" crossorigin>
     <link rel="modulepreload" href="/assets/star-B5_zoy4Z.js" fetchpriority="low" crossorigin>
     
-    <!-- Critical images with long-term caching hints -->
-    <link rel="preload" href="/eppi-cinema-logo.png" as="image" fetchpriority="high" crossorigin type="image/png">
-    <link rel="preload" href="/nossa-tv-logo.png" as="image" fetchpriority="high" crossorigin type="image/png">
+    <!-- Critical images with long-term caching hints and immutable attributes -->
+    <link rel="preload" href="/eppi-cinema-logo.png" as="image" fetchpriority="high" crossorigin type="image/png" media="(max-width: 768px)">
+    <link rel="preload" href="/nossa-tv-logo.png" as="image" fetchpriority="high" crossorigin type="image/png" media="(max-width: 768px)">
     <link rel="preload" href="/lovable-uploads/717a228b-ebde-4d63-bf4d-3bcdcbb96089.png" as="image" fetchpriority="medium" crossorigin type="image/png">
     
-    <!-- Prefetch WebP optimized images for future use -->
+    <!-- Prefetch WebP optimized images for future use with cache hints -->
     <link rel="prefetch" href="/eppi-cinema-32x32.webp" as="image" type="image/webp">
     <link rel="prefetch" href="/nossa-tv-32x32.webp" as="image" type="image/webp">
+    
+    <!-- Cache optimization for static assets -->
+    <script>
+      // Add cache headers to resource requests
+      if ('fetch' in window) {
+        const originalFetch = window.fetch;
+        window.fetch = function(...args) {
+          const [resource, config = {}] = args;
+          if (typeof resource === 'string' && (
+            resource.includes('.png') || 
+            resource.includes('.js') || 
+            resource.includes('.css') ||
+            resource.includes('/assets/')
+          )) {
+            config.cache = config.cache || 'force-cache';
+          }
+          return originalFetch(resource, config);
+        };
+      }
+    </script>
     
     <!-- Critical CSS inlined for fastest rendering -->
     <style>
