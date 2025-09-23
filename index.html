@@ -37,9 +37,16 @@
     <link rel="prefetch" href="/eppi-cinema-logo.png" as="image">
     <link rel="prefetch" href="/nossa-tv-logo.png" as="image">
     
-    <!-- Non-blocking CSS loading -->
+    <!-- Critical CSS inlined for fastest rendering -->
+    <style>
+      /* Critical above-the-fold styles to prevent FOUC */
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { font-family: system-ui, -apple-system, sans-serif; }
+      #root { min-height: 100vh; }
+    </style>
+    
+    <!-- Non-blocking CSS loading strategy -->
     <link rel="preload" href="/src/index.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="stylesheet" href="/src/index.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="/src/index.css"></noscript>
     
     <link rel="icon" href="/lovable-uploads/717a228b-ebde-4d63-bf4d-3bcdcbb96089.png" type="image/png">
