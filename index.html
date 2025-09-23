@@ -214,20 +214,24 @@
       .loading-fallback { display: none; }
     </style>
     
-    <!-- Async CSS loading with JavaScript fallback -->
+    <!-- Aggressive async CSS loading to eliminate render-blocking -->
     <script>
       (function() {
-        // Prevent ALL synchronous CSS loading immediately
+        // Block ALL synchronous CSS loading at the earliest possible moment
         var originalCreateElement = document.createElement;
+        var originalAppendChild = document.head.appendChild;
+        var originalInsertBefore = document.head.insertBefore;
+        
+        // Override createElement to force async CSS
         document.createElement = function(tagName) {
           var element = originalCreateElement.call(document, tagName);
           if (tagName.toLowerCase() === 'link') {
             var originalSetAttribute = element.setAttribute;
             element.setAttribute = function(name, value) {
               if (name === 'rel' && value === 'stylesheet') {
-                // Force async loading for all stylesheets
-                originalSetAttribute.call(this, 'media', 'print');
-                originalSetAttribute.call(this, 'onload', 'this.media="all";this.onload=null;');
+                originalSetAttribute.call(this, 'rel', 'preload');
+                originalSetAttribute.call(this, 'as', 'style');
+                originalSetAttribute.call(this, 'onload', 'this.onload=null;this.rel="stylesheet"');
               }
               return originalSetAttribute.call(this, name, value);
             };
@@ -235,60 +239,90 @@
           return element;
         };
         
-        // Immediate DOM observer for any injected CSS
+        // Override appendChild to catch direct CSS insertions
+        document.head.appendChild = function(element) {
+          if (element.tagName === 'LINK' && element.rel === 'stylesheet') {
+            element.rel = 'preload';
+            element.as = 'style';
+            element.onload = function() { this.onload=null; this.rel='stylesheet'; };
+          }
+          return originalAppendChild.call(this, element);
+        };
+        
+        // Override insertBefore for CSS insertions
+        document.head.insertBefore = function(element, before) {
+          if (element.tagName === 'LINK' && element.rel === 'stylesheet') {
+            element.rel = 'preload';
+            element.as = 'style';
+            element.onload = function() { this.onload=null; this.rel='stylesheet'; };
+          }
+          return originalInsertBefore.call(this, element, before);
+        };
+        
+        // Immediate DOM observer for runtime CSS injections
         var observer = new MutationObserver(function(mutations) {
           mutations.forEach(function(mutation) {
             mutation.addedNodes.forEach(function(node) {
-              if (node.tagName === 'LINK' && node.rel === 'stylesheet' && !node.media) {
-                node.media = 'print';
-                node.onload = function() { 
-                  this.media = 'all'; 
-                  this.onload = null; 
-                };
+              if (node.tagName === 'LINK' && node.rel === 'stylesheet') {
+                node.rel = 'preload';
+                node.as = 'style';
+                node.onload = function() { this.onload=null; this.rel='stylesheet'; };
               }
             });
           });
         });
         observer.observe(document.head, { childList: true, subtree: true });
         
-        // Enhanced CSS loader with error handling
+        // Optimized CSS loader using preload technique
         function loadCSS(href) {
           var css = document.createElement('link');
-          css.rel = 'stylesheet';
+          css.rel = 'preload';
+          css.as = 'style';
           css.href = href;
-          css.media = 'print';
           css.onload = function() { 
-            this.media = 'all'; 
-            this.onload = null;
+            this.onload = null; 
+            this.rel = 'stylesheet'; 
           };
           css.onerror = function() { this.remove(); };
           document.head.appendChild(css);
+          
+          // Fallback for browsers that don't support preload
+          setTimeout(function() {
+            if (css.rel !== 'stylesheet') {
+              css.rel = 'stylesheet';
+            }
+          }, 100);
+          
           return css;
         }
         
-        // Auto-detect and load CSS files
-        var scripts = document.querySelectorAll('script[src*="/assets/index-"]');
+        // Enhanced CSS detection and loading
+        var cssPatterns = ['/assets/index-', '/src/index.css'];
         var cssLoaded = false;
         
-        if (scripts.length > 0) {
-          // Production: derive CSS from JS filename
-          var jsFile = scripts[0].src;
-          var cssFile = jsFile.replace(/\.js$/, '.css').replace(/index-[^\/]+\.js/, function(match) {
-            return match.replace('.js', '.css');
-          });
-          loadCSS(cssFile);
-          cssLoaded = true;
+        // Try to find CSS from existing script tags
+        var scripts = document.querySelectorAll('script[src]');
+        for (var i = 0; i < scripts.length; i++) {
+          var src = scripts[i].src;
+          if (src.includes('/assets/index-') && src.endsWith('.js')) {
+            var cssFile = src.replace(/\.js$/, '.css');
+            loadCSS(cssFile);
+            cssLoaded = true;
+            break;
+          }
         }
         
-        // Fallback for development
+        // Development fallback
         if (!cssLoaded) {
           loadCSS('/src/index.css');
         }
         
-        // Clean up after page load
+        // Restore original functions after page load
         window.addEventListener('load', function() {
           observer.disconnect();
           document.createElement = originalCreateElement;
+          document.head.appendChild = originalAppendChild;
+          document.head.insertBefore = originalInsertBefore;
         });
       })();
     </script>
