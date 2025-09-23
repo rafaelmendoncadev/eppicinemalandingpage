@@ -29,8 +29,9 @@
     <link rel="preload" href="/src/App.tsx" as="script" crossorigin fetchpriority="high">
     <link rel="preload" href="/lovable-uploads/717a228b-ebde-4d63-bf4d-3bcdcbb96089.png" as="image" fetchpriority="low">
     
-    <!-- Non-blocking CSS loading with inline fallback -->
-    <link rel="preload" href="/src/index.css" as="style" onload="this.onload=null;this.rel='stylesheet'" fetchpriority="high">
+    <!-- Non-blocking CSS loading -->
+    <link rel="preload" href="/src/index.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" href="/src/index.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="/src/index.css"></noscript>
     
     <link rel="icon" href="/lovable-uploads/717a228b-ebde-4d63-bf4d-3bcdcbb96089.png" type="image/png">
