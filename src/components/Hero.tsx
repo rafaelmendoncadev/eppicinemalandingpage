@@ -21,10 +21,19 @@ const Hero = () => {
     }
   };
 
+  const handleActivateClick = (url: string) => {
+    // Analytics tracking could be added here
+    window.open(url, '_blank', 'noopener,noreferrer');
+  };
+
   return (
-    <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-purple-900 to-blue-900">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
+    <section 
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-purple-900 to-blue-900"
+      aria-labelledby="hero-title"
+      role="main"
+    >
+      {/* Background Pattern - Decorative only */}
+      <div className="absolute inset-0 opacity-10" aria-hidden="true">
         <div className="absolute inset-0" style={{
           backgroundImage: `url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.1"%3E%3Ccircle cx="30" cy="30" r="2"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')`,
           backgroundRepeat: 'repeat'
@@ -32,45 +41,78 @@ const Hero = () => {
       </div>
       
       {/* Content */}
-      <div className="relative z-10 text-center text-white px-4 max-w-6xl mx-auto">
+      <div className="relative z-10 text-center text-white px-4 max-w-6xl mx-auto animate-fade-in">
         {/* Main Title */}
-        <div className="mb-6">
-          <h1 className="text-3xl md:text-5xl font-bold mb-3 bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent leading-tight">
+        <header className="mb-6">
+          <h1 
+            id="hero-title"
+            className="text-3xl md:text-5xl lg:text-6xl font-bold mb-3 bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent leading-tight"
+          >
             {t('hero.subtitle')}
           </h1>
-          <h2 className="text-lg md:text-2xl font-semibold text-gray-300 mb-5">
+          <h2 className="text-lg md:text-2xl lg:text-3xl font-semibold text-gray-300 mb-5">
             {t('hero.title')}
           </h2>
-        </div>
+        </header>
 
-        {/* Quadros Lado a Lado */}
+        {/* Information Cards */}
         <div className="mb-6 max-w-5xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-            {/* Primeiro Quadro - Você Sabia? */}
-            <div className="bg-gradient-to-br from-red-500/20 to-orange-500/20 backdrop-blur-lg border border-red-500/30 rounded-lg p-3 transform hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-red-500/25">
-              <h3 className="text-lg font-bold text-white mb-2">{t('hero.didYouKnow')}</h3>
-              <p className="text-white/90 text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: t('hero.costComparison') }} />
-            </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
+            {/* Did You Know Card */}
+            <article 
+              className="bg-gradient-to-br from-red-500/20 to-orange-500/20 backdrop-blur-lg border border-red-500/30 rounded-lg p-3 md:p-4 transform hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-red-500/25 animate-slide-up"
+              role="article"
+              aria-labelledby="did-you-know-title"
+            >
+              <h3 id="did-you-know-title" className="text-lg md:text-xl font-bold text-white mb-2">
+                {t('hero.didYouKnow')}
+              </h3>
+              <p 
+                className="text-white/90 text-sm md:text-base leading-relaxed" 
+                dangerouslySetInnerHTML={{ __html: t('hero.costComparison') }} 
+              />
+            </article>
 
-            {/* Segundo Quadro - Nossa Solução */}
-            <div className="bg-gradient-to-br from-green-500/20 to-blue-500/20 backdrop-blur-lg border border-green-500/30 rounded-lg p-3 transform hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-green-500/25">
-              <h3 className="text-lg font-bold text-white mb-2">{t('hero.ourSolution')}</h3>
-              <p className="text-white/90 text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: t('hero.appDescription') }} />
-            </div>
+            {/* Our Solution Card */}
+            <article 
+              className="bg-gradient-to-br from-green-500/20 to-blue-500/20 backdrop-blur-lg border border-green-500/30 rounded-lg p-3 md:p-4 transform hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-green-500/25 animate-slide-up"
+              role="article"
+              aria-labelledby="our-solution-title"
+              style={{ animationDelay: '0.1s' }}
+            >
+              <h3 id="our-solution-title" className="text-lg md:text-xl font-bold text-white mb-2">
+                {t('hero.ourSolution')}
+              </h3>
+              <p 
+                className="text-white/90 text-sm md:text-base leading-relaxed" 
+                dangerouslySetInnerHTML={{ __html: t('hero.appDescription') }} 
+              />
+            </article>
           </div>
         </div>
 
-        {/* Quadros de Promoção */}
+        {/* Promotional Plans */}
         <div className="mb-8 max-w-5xl mx-auto">
-          <div className={`grid grid-cols-1 gap-4 ${language === 'pt' ? 'lg:grid-cols-3' : 'lg:grid-cols-2'}`}>
-            {/* Promoção Mensal */}
-            <div className="bg-gradient-to-br from-blue-500/20 to-purple-500/20 backdrop-blur-lg border border-blue-500/30 rounded-lg p-3 transform hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-blue-500/25 flex flex-col h-full">
-              <h4 className="text-lg font-bold text-white mb-2">{t('promotions.monthlyTitle')}</h4>
+          <div className={`grid grid-cols-1 gap-4 md:gap-6 ${language === 'pt' ? 'lg:grid-cols-3' : 'lg:grid-cols-2'}`}>
+            {/* Monthly Plan */}
+            <article 
+              className="bg-gradient-to-br from-blue-500/20 to-purple-500/20 backdrop-blur-lg border border-blue-500/30 rounded-lg p-3 md:p-4 transform hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-blue-500/25 flex flex-col h-full animate-slide-up"
+              role="article"
+              aria-labelledby="monthly-plan-title"
+              style={{ animationDelay: '0.2s' }}
+            >
+              <h4 id="monthly-plan-title" className="text-lg md:text-xl font-bold text-white mb-2">
+                {t('promotions.monthlyTitle')}
+              </h4>
               <div className="mb-2">
-                <p className="text-white/70 text-sm line-through">{t('promotions.monthlyOriginalPrice')}</p>
-                <p className="text-blue-400 text-2xl font-bold">{t('promotions.monthlyPrice')}</p>
+                <p className="text-white/70 text-sm line-through" aria-label="Preço original">
+                  {t('promotions.monthlyOriginalPrice')}
+                </p>
+                <p className="text-blue-400 text-2xl md:text-3xl font-bold" aria-label="Preço promocional">
+                  {t('promotions.monthlyPrice')}
+                </p>
               </div>
-              <p className="text-white/90 text-sm leading-relaxed flex-grow">
+              <p className="text-white/90 text-sm md:text-base leading-relaxed flex-grow">
                 {t('promotions.monthlySavings')}
               </p>
               {language === 'en' && (
@@ -80,22 +122,34 @@ const Hero = () => {
                   </p>
                 </div>
               )}
-              <button 
-                className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white px-6 py-2.5 rounded-lg font-bold transition-all duration-300 transform hover:scale-105 w-full mt-3"
-                onClick={() => window.open(language === 'en' ? 'https://chat.whatsapp.com/HIBmUWCuNeAFfFzmru99MP' : 'https://biolivre.com.br/nuvembr', '_blank')}
+              <Button 
+                onClick={() => handleActivateClick(language === 'en' ? 'https://chat.whatsapp.com/HIBmUWCuNeAFfFzmru99MP' : 'https://biolivre.com.br/nuvembr')}
+                className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white px-6 py-2.5 md:px-8 md:py-3 rounded-lg font-bold transition-all duration-300 transform hover:scale-105 w-full mt-3 text-sm md:text-base focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-transparent"
+                aria-label={`Ativar plano mensal - ${t('promotions.monthlyPrice')}`}
               >
                 {t('promotions.activateNow')}
-              </button>
-            </div>
+              </Button>
+            </article>
 
-            {/* Promoção Anual */}
-            <div className="bg-gradient-to-br from-red-500/20 to-orange-500/20 backdrop-blur-lg border border-red-500/30 rounded-lg p-3 transform hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-red-500/25 flex flex-col h-full">
-              <h4 className="text-lg font-bold text-white mb-2">{t('promotions.annualTitle')}</h4>
+            {/* Annual Plan */}
+            <article 
+              className="bg-gradient-to-br from-red-500/20 to-orange-500/20 backdrop-blur-lg border border-red-500/30 rounded-lg p-3 md:p-4 transform hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-red-500/25 flex flex-col h-full animate-slide-up"
+              role="article"
+              aria-labelledby="annual-plan-title"
+              style={{ animationDelay: '0.3s' }}
+            >
+              <h4 id="annual-plan-title" className="text-lg md:text-xl font-bold text-white mb-2">
+                {t('promotions.annualTitle')}
+              </h4>
               <div className="mb-2">
-                <p className="text-white/70 text-sm line-through">{t('promotions.annualOriginalPrice')}</p>
-                <p className="text-red-400 text-2xl font-bold">{t('promotions.annualPrice')}</p>
+                <p className="text-white/70 text-sm line-through" aria-label="Preço original">
+                  {t('promotions.annualOriginalPrice')}
+                </p>
+                <p className="text-red-400 text-2xl md:text-3xl font-bold" aria-label="Preço promocional">
+                  {t('promotions.annualPrice')}
+                </p>
               </div>
-              <p className="text-white/90 text-sm leading-relaxed flex-grow">
+              <p className="text-white/90 text-sm md:text-base leading-relaxed flex-grow">
                 {t('promotions.annualSavings')}
               </p>
               {language === 'en' && (
@@ -105,63 +159,77 @@ const Hero = () => {
                   </p>
                 </div>
               )}
-              <button 
-                className="bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 text-white px-6 py-2.5 rounded-lg font-bold transition-all duration-300 transform hover:scale-105 w-full mt-3"
-                onClick={() => window.open(language === 'en' ? 'https://chat.whatsapp.com/HIBmUWCuNeAFfFzmru99MP' : 'https://biolivre.com.br/nuvembr', '_blank')}
+              <Button 
+                onClick={() => handleActivateClick(language === 'en' ? 'https://chat.whatsapp.com/HIBmUWCuNeAFfFzmru99MP' : 'https://biolivre.com.br/nuvembr')}
+                className="bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 text-white px-6 py-2.5 md:px-8 md:py-3 rounded-lg font-bold transition-all duration-300 transform hover:scale-105 w-full mt-3 text-sm md:text-base focus:ring-2 focus:ring-red-400 focus:ring-offset-2 focus:ring-offset-transparent"
+                aria-label={`Ativar plano anual - ${t('promotions.annualPrice')}`}
               >
                 {t('promotions.activateNow')}
-              </button>
-            </div>
+              </Button>
+            </article>
 
-            {/* Plano Anual NossaTV - Apenas versão portuguesa */}
+            {/* NossaTV Annual Plan - Portuguese only */}
             {language === 'pt' && (
-              <div className="bg-gradient-to-br from-green-500/20 to-teal-500/20 backdrop-blur-lg border border-green-500/30 rounded-lg p-3 transform hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-green-500/25 flex flex-col h-full">
-                <h4 className="text-lg font-bold text-white mb-2">Plano Anual NossaTV</h4>
+              <article 
+                className="bg-gradient-to-br from-green-500/20 to-teal-500/20 backdrop-blur-lg border border-green-500/30 rounded-lg p-3 md:p-4 transform hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-green-500/25 flex flex-col h-full animate-slide-up"
+                role="article"
+                aria-labelledby="nossatv-plan-title"
+                style={{ animationDelay: '0.4s' }}
+              >
+                <h4 id="nossatv-plan-title" className="text-lg md:text-xl font-bold text-white mb-2">
+                  Plano Anual NossaTV
+                </h4>
                 <div className="mb-2">
-                  <p className="text-white/70 text-sm line-through">De R$ 310,00</p>
-                  <p className="text-green-400 text-2xl font-bold">R$ 241,00</p>
+                  <p className="text-white/70 text-sm line-through" aria-label="Preço original">
+                    De R$ 310,00
+                  </p>
+                  <p className="text-green-400 text-2xl md:text-3xl font-bold" aria-label="Preço promocional">
+                    R$ 241,00
+                  </p>
                   <p className="text-yellow-400 font-bold text-sm mt-1">
                     💳 2x sem juros
                   </p>
                 </div>
-                <p className="text-white/90 text-sm leading-relaxed flex-grow">
+                <p className="text-white/90 text-sm md:text-base leading-relaxed flex-grow">
                   💰 Economize R$ 69,00 no plano anual da NossaTV! Acesso completo por 12 meses.
                 </p>
-                <button 
-                  className="bg-gradient-to-r from-green-500 to-teal-500 hover:from-green-600 hover:to-teal-600 text-white px-6 py-2.5 rounded-lg font-bold transition-all duration-300 transform hover:scale-105 w-full mt-3"
-                  onClick={() => window.open('https://biolivre.com.br/nuvembr', '_blank')}
+                <Button 
+                  onClick={() => handleActivateClick('https://biolivre.com.br/nuvembr')}
+                  className="bg-gradient-to-r from-green-500 to-teal-500 hover:from-green-600 hover:to-teal-600 text-white px-6 py-2.5 md:px-8 md:py-3 rounded-lg font-bold transition-all duration-300 transform hover:scale-105 w-full mt-3 text-sm md:text-base focus:ring-2 focus:ring-green-400 focus:ring-offset-2 focus:ring-offset-transparent"
+                  aria-label="Ativar plano anual NossaTV - R$ 241,00"
                 >
                   RECARREGAR AGORA
-                </button>
-              </div>
+                </Button>
+              </article>
             )}
           </div>
         </div>
 
         {/* Trust Badges */}
-        <div className="mb-8">
-          <div className="flex flex-wrap justify-center items-center gap-6 text-sm text-gray-300">
-            <div className="flex items-center gap-2">
-              <Shield className="w-5 h-5 text-green-400" />
+        <div className="mb-8 animate-slide-up" style={{ animationDelay: '0.5s' }}>
+          <div className="flex flex-wrap justify-center items-center gap-4 md:gap-6 text-sm md:text-base text-gray-300">
+            <div className="flex items-center gap-2" role="img" aria-label="Pagamento seguro">
+              <Shield className="w-5 h-5 md:w-6 md:h-6 text-green-400" aria-hidden="true" />
               <span>{t('hero.securePayment')}</span>
             </div>
-            <div className="flex items-center gap-2">
-              <Users className="w-5 h-5 text-blue-400" />
+            <div className="flex items-center gap-2" role="img" aria-label="Usuários confiáveis">
+              <Users className="w-5 h-5 md:w-6 md:h-6 text-blue-400" aria-hidden="true" />
               <span>{t('hero.trustedUsers')}</span>
             </div>
-            <div className="flex items-center gap-2">
-              <Zap className="w-5 h-5 text-yellow-400" />
+            <div className="flex items-center gap-2" role="img" aria-label="Ativação instantânea">
+              <Zap className="w-5 h-5 md:w-6 md:h-6 text-yellow-400" aria-hidden="true" />
               <span>{t('hero.instantActivation')}</span>
             </div>
           </div>
         </div>
 
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8 animate-slide-up" style={{ animationDelay: '0.6s' }}>
           <Button
             onClick={scrollToPricing}
             size="lg"
-            className="bg-gradient-to-r from-green-500 to-lime-500 hover:from-green-600 hover:to-lime-600 text-black px-12 py-4 text-lg font-bold rounded-xl transition-all duration-300 transform hover:scale-105 shadow-2xl w-full sm:w-80"
+            className="bg-gradient-to-r from-green-500 to-lime-500 hover:from-green-600 hover:to-lime-600 text-black px-8 md:px-12 py-3 md:py-4 text-base md:text-lg font-bold rounded-xl transition-all duration-300 transform hover:scale-105 shadow-2xl w-full sm:w-80 focus:ring-2 focus:ring-green-400 focus:ring-offset-2 focus:ring-offset-transparent"
+            aria-label="Ver todos os planos de recarga disponíveis"
           >
             {language === 'en' ? 'VIEW PLANS' : 'VER RECARGAS'}
           </Button>
@@ -169,13 +237,14 @@ const Hero = () => {
           <Button
             onClick={scrollToDownloads}
             size="lg"
-            className="bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 text-white px-12 py-4 text-lg font-bold rounded-xl transition-all duration-300 transform hover:scale-105 shadow-2xl w-full sm:w-80"
+            className="bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 text-white px-8 md:px-12 py-3 md:py-4 text-base md:text-lg font-bold rounded-xl transition-all duration-300 transform hover:scale-105 shadow-2xl w-full sm:w-80 focus:ring-2 focus:ring-red-400 focus:ring-offset-2 focus:ring-offset-transparent"
+            aria-label="Ver downloads disponíveis para TV Box e celular"
           >
             {language === 'en' ? 'Available for TV Box and Mobile' : 'Disponível para TV Box e Celular'}
           </Button>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
