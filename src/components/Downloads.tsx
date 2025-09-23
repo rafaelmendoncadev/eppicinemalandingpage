@@ -37,7 +37,7 @@ export default function Downloads() {
             <Smartphone className="w-10 h-10 md:w-12 md:h-12 text-emerald-600 mb-3" />
             <Button 
               variant="outline" 
-              className="w-full md:w-auto border-emerald-500 text-emerald-600 hover:bg-emerald-50"
+              className="w-full md:w-auto border-emerald-500 text-emerald-700 hover:bg-emerald-50"
               onClick={handleDownloadAndroid}
             >
               {t('downloads.android')}
