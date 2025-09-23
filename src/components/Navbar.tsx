@@ -24,22 +24,22 @@ export default function Navbar() {
         <div className="flex items-center">
           <div className="flex items-center gap-2 mr-4">
             <img 
-              src="/eppi-cinema-logo.png" 
+              src="/eppi-cinema-logo-optimized.webp" 
               alt="Eppi Cinema Logo" 
               className="h-8 w-auto object-contain"
               loading="eager"
               fetchPriority="high"
-              width="128"
+              width="32"
               height="32"
               decoding="async"
             />
             <img 
-              src="/nossa-tv-logo.png" 
+              src="/nossa-tv-logo-optimized.webp" 
               alt="NossaTV Logo" 
               className="h-8 w-auto object-contain"
               loading="eager"
               fetchPriority="high"
-              width="148"
+              width="32"
               height="32"
               decoding="async"
             />
