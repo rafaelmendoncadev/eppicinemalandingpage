@@ -23,30 +23,44 @@ export default function Navbar() {
       <div className="container mx-auto px-4 flex items-center justify-between h-16">
         <div className="flex items-center">
           <div className="flex items-center gap-1 mr-2 md:mr-4">
-            <img 
-              src="/eppi-cinema-logo.png" 
-              alt="Eppi Cinema Logo" 
-              className="h-6 w-6 md:h-8 md:w-8 object-contain object-center"
-              loading="eager"
-              fetchPriority="high"
-              width="32"
-              height="32"
-              decoding="async"
-              sizes="(max-width: 768px) 24px, 32px"
-              style={{ maxWidth: '32px', maxHeight: '32px' }}
-            />
-            <img 
-              src="/nossa-tv-logo.png" 
-              alt="NossaTV Logo" 
-              className="h-6 w-auto md:h-8 md:w-auto object-contain object-center"
-              loading="eager"
-              fetchPriority="high"
-              width="37"
-              height="32"
-              decoding="async"
-              sizes="(max-width: 768px) 24px, 32px"
-              style={{ maxWidth: '37px', maxHeight: '32px' }}
-            />
+            <picture>
+              <source 
+                srcSet="/eppi-cinema-logo-optimized.webp" 
+                type="image/webp"
+                sizes="(max-width: 768px) 24px, 32px"
+              />
+              <img 
+                src="/eppi-cinema-logo.png" 
+                alt="Eppi Cinema Logo" 
+                className="h-6 w-6 md:h-8 md:w-8 object-contain object-center"
+                loading="eager"
+                fetchPriority="high"
+                width="32"
+                height="32"
+                decoding="async"
+                sizes="(max-width: 768px) 24px, 32px"
+                style={{ maxWidth: '32px', maxHeight: '32px' }}
+              />
+            </picture>
+            <picture>
+              <source 
+                srcSet="/nossa-tv-logo-optimized.webp" 
+                type="image/webp"
+                sizes="(max-width: 768px) 24px, 32px"
+              />
+              <img 
+                src="/nossa-tv-logo.png" 
+                alt="NossaTV Logo" 
+                className="h-6 w-auto md:h-8 md:w-auto object-contain object-center"
+                loading="eager"
+                fetchPriority="high"
+                width="37"
+                height="32"
+                decoding="async"
+                sizes="(max-width: 768px) 24px, 32px"
+                style={{ maxWidth: '37px', maxHeight: '32px' }}
+              />
+            </picture>
           </div>
           <span className="text-base md:text-lg font-bold bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">{t('nav.brandName')}</span>
         </div>
