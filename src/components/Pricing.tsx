@@ -1,7 +1,8 @@
 
 import { Button } from "@/components/ui/button";
-import { Check, Star, Zap, Shield } from "lucide-react";
+import { Check, Star, Zap, Shield, Clock, Users } from "lucide-react";
 import { useLanguage } from '../contexts/LanguageContext';
+import { handlePurchaseClick, handleDualPurchaseClick } from '../utils/popupUtils';
 
 const Pricing = () => {
   const { t, language } = useLanguage();
@@ -86,7 +87,11 @@ const Pricing = () => {
                 <div className="mt-auto">
                   <Button 
                     className="w-full bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 text-white py-3 text-base font-bold rounded-xl transition-all duration-300 shadow-lg"
-                    onClick={() => window.open(language === 'en' ? 'https://chat.whatsapp.com/HIBmUWCuNeAFfFzmru99MP' : 'https://biolivre.com.br/nuvembr', '_blank')}
+                    onClick={() => handleDualPurchaseClick(
+                      language === 'en' ? '' : 'https://biolivre.com.br/nuvembr', 
+                      language,
+                      language === 'en' ? '/payment-instructions.html' : undefined
+                    )}
                   >
                     {t('promotions.activateNow')}
                   </Button>
@@ -156,7 +161,11 @@ const Pricing = () => {
                 <div className="mt-auto">
                   <Button 
                     className="w-full bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white py-3 text-base font-bold rounded-xl transition-all duration-300 shadow-lg transform hover:scale-105"
-                    onClick={() => window.open(language === 'en' ? 'https://chat.whatsapp.com/HIBmUWCuNeAFfFzmru99MP' : 'https://biolivre.com.br/nuvembr', '_blank')}
+                    onClick={() => handleDualPurchaseClick(
+                      language === 'en' ? '' : 'https://biolivre.com.br/nuvembr', 
+                      language,
+                      language === 'en' ? '/payment-instructions.html' : undefined
+                    )}
                   >
                     {t('promotions.activateNow')}
                   </Button>
@@ -215,7 +224,7 @@ const Pricing = () => {
                   <div className="mt-auto">
                     <Button 
                       className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white py-3 text-base font-bold rounded-xl transition-all duration-300 shadow-lg"
-                      onClick={() => window.open('https://biolivre.com.br/nuvembr', '_blank')}
+                      onClick={() => handlePurchaseClick('https://biolivre.com.br/nuvembr', language)}
                     >
                       RECARREGAR AGORA
                     </Button>
@@ -286,7 +295,7 @@ const Pricing = () => {
                   <div className="mt-auto">
                     <Button 
                       className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white py-3 text-base font-bold rounded-xl transition-all duration-300 shadow-lg transform hover:scale-105"
-                      onClick={() => window.open('https://biolivre.com.br/nuvembr', '_blank')}
+                      onClick={() => handlePurchaseClick('https://biolivre.com.br/nuvembr', language)}
                     >
                       {t('promotions.activateNow')}
                     </Button>

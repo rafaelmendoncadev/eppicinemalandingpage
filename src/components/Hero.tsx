@@ -3,6 +3,7 @@ import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Check, Shield, Users, Zap } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { handlePurchaseClick, handleDualPurchaseClick } from '../utils/popupUtils';
 
 const Hero = () => {
   const { t, language } = useLanguage();
@@ -82,7 +83,11 @@ const Hero = () => {
               )}
               <button 
                 className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white px-6 py-2.5 rounded-lg font-bold transition-all duration-300 transform hover:scale-105 w-full mt-3"
-                onClick={() => window.open(language === 'en' ? 'https://chat.whatsapp.com/HIBmUWCuNeAFfFzmru99MP' : 'https://biolivre.com.br/nuvembr', '_blank')}
+                onClick={() => handleDualPurchaseClick(
+                  language === 'en' ? '' : 'https://biolivre.com.br/nuvembr', 
+                  language,
+                  language === 'en' ? '/payment-instructions.html' : undefined
+                )}
               >
                 {t('promotions.activateNow')}
               </button>
@@ -107,7 +112,11 @@ const Hero = () => {
               )}
               <button 
                 className="bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 text-white px-6 py-2.5 rounded-lg font-bold transition-all duration-300 transform hover:scale-105 w-full mt-3"
-                onClick={() => window.open(language === 'en' ? 'https://chat.whatsapp.com/HIBmUWCuNeAFfFzmru99MP' : 'https://biolivre.com.br/nuvembr', '_blank')}
+                onClick={() => handleDualPurchaseClick(
+                  language === 'en' ? '' : 'https://biolivre.com.br/nuvembr', 
+                  language,
+                  language === 'en' ? '/payment-instructions.html' : undefined
+                )}
               >
                 {t('promotions.activateNow')}
               </button>
@@ -129,7 +138,7 @@ const Hero = () => {
                 </p>
                 <button 
                   className="bg-gradient-to-r from-green-500 to-teal-500 hover:from-green-600 hover:to-teal-600 text-white px-6 py-2.5 rounded-lg font-bold transition-all duration-300 transform hover:scale-105 w-full mt-3"
-                  onClick={() => window.open('https://biolivre.com.br/nuvembr', '_blank')}
+                  onClick={() => handlePurchaseClick('https://biolivre.com.br/nuvembr', language)}
                 >
                   RECARREGAR AGORA
                 </button>
