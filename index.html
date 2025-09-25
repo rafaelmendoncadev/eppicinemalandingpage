@@ -4,48 +4,408 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Eppi Cinema - Compre sua Recarga!</title>
-    <meta name="description" content="Compre sua recarga de cinema online" />
-    <meta name="author" content="Lovable" />
+    <title>Eppi Cinema - Compre sua Recarga Online | Recargas Instantâneas</title>
+    <meta name="description" content="Compre recargas de Eppi Cinema e NossaTV online. Ativação instantânea, preços promocionais e suporte 24h. Economize até R$ 69 no plano anual!" />
+    <meta name="keywords" content="eppi cinema, nossa tv, recarga online, tv box, streaming, planos anuais, promoção" />
+    <meta name="author" content="Eppi Cinema" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://eppicinemalandingpage.lovable.app/" />
 
-    <!-- Cache optimization hints -->
-    <meta http-equiv="Cache-Control" content="public, max-age=3600">
-    <meta http-equiv="Expires" content="3600">
+    <!-- Enhanced cache optimization hints for better resource caching -->
+    <meta http-equiv="Cache-Control" content="public, max-age=31536000, stale-while-revalidate=604800, immutable">
+    <meta http-equiv="Pragma" content="cache">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    
+    <!-- Static asset cache hints -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="preconnect" href="https://eppicinemalandingpage.lovable.app" crossorigin>
+    
+    <!-- Service worker registration hints for aggressive caching -->
+    <link rel="manifest" href="data:application/manifest+json,{&quot;name&quot;:&quot;Eppi Cinema&quot;,&quot;short_name&quot;:&quot;EppiCinema&quot;,&quot;display&quot;:&quot;standalone&quot;,&quot;background_color&quot;:&quot;#1a1a1a&quot;,&quot;theme_color&quot;:&quot;#1a1a1a&quot;,&quot;icons&quot;:[{&quot;src&quot;:&quot;/lovable-uploads/717a228b-ebde-4d63-bf4d-3bcdcbb96089.png&quot;,&quot;sizes&quot;:&quot;512x512&quot;,&quot;type&quot;:&quot;image/png&quot;}]}">
+    <meta name="theme-color" content="#1a1a1a">
+    
+    <!-- Comprehensive cache optimization script for all static assets -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('data:application/javascript,const CACHE_NAME="eppi-cache-v2";const urlsToCache=["/eppi-cinema-logo.png","/nossa-tv-logo.png","/lovable-uploads/717a228b-ebde-4d63-bf4d-3bcdcbb96089.png"];self.addEventListener("install",e=>{e.waitUntil(caches.open(CACHE_NAME).then(cache=>cache.addAll(urlsToCache)))});self.addEventListener("fetch",e=>{if(e.request.url.includes(".png")||e.request.url.includes(".js")||e.request.url.includes(".css")||e.request.url.includes("/assets/")){e.respondWith(caches.open(CACHE_NAME).then(cache=>cache.match(e.request).then(response=>{if(response){return response;}return fetch(e.request).then(networkResponse=>{cache.put(e.request,networkResponse.clone());return networkResponse;});}).catch(()=>fetch(e.request))));}});').catch(()=>{});
+      }
+    </script>
 
-    <!-- Resource hints for performance optimization -->
+     <!-- Priority resource hints for performance optimization -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="dns-prefetch" href="https://cdn.gpteng.co">
+    <link rel="preconnect" href="https://cdn.gpteng.co">
     <link rel="dns-prefetch" href="https://eppicinemalandingpage.lovable.app">
     
-    <!-- Critical resource preloading -->
-    <link rel="modulepreload" href="/src/main.tsx">
-    <link rel="preload" href="/src/index.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="/src/index.css"></noscript>
-    <link rel="preload" href="/src/App.tsx" as="script" crossorigin>
-    <link rel="preload" href="/lovable-uploads/717a228b-ebde-4d63-bf4d-3bcdcbb96089.png" as="image">
+    <!-- Critical resource preloading with optimized dependency chain breaking -->
+    <link rel="modulepreload" href="/src/main.tsx" fetchpriority="high" crossorigin>
+    <link rel="preload" href="/src/App.tsx" as="script" crossorigin fetchpriority="high">
     
-    <!-- Async CSS loading for performance -->
+    <!-- Main bundle with highest priority to break dependency chains -->
+    <link rel="modulepreload" href="/assets/index-DZ3H1UiK.js" fetchpriority="high" crossorigin>
+    <!-- Non-blocking CSS preload to avoid render-blocking -->
+    <link rel="preload" href="/assets/index-D3bDqBN7.css" as="style" crossorigin onload="this.onload=null;this.rel='stylesheet'">
+    
+    <!-- Critical component chunks preloaded in parallel to break dependency chains -->
+    <link rel="modulepreload" href="/assets/Footer-Cz7-evi3.js" fetchpriority="high" crossorigin>
+    <link rel="modulepreload" href="/assets/Pricing-DLiOfTB4.js" fetchpriority="high" crossorigin>
+    <link rel="modulepreload" href="/assets/HowItWorks-AmdCp4Z9.js" fetchpriority="high" crossorigin>
+    <link rel="modulepreload" href="/assets/WhyBuyHere-DtPzNHTy.js" fetchpriority="high" crossorigin>
+    
+    <!-- Secondary component chunks with medium priority -->
+    <link rel="modulepreload" href="/assets/Downloads-B2QHt_a7.js" fetchpriority="medium" crossorigin>
+    <link rel="modulepreload" href="/assets/FloatingWhatsApp-8kdl7Rls.js" fetchpriority="medium" crossorigin>
+    <link rel="modulepreload" href="/assets/star-B5_zoy4Z.js" fetchpriority="medium" crossorigin>
+    
+    <!-- Critical images with long-term caching hints and immutable attributes -->
+    <link rel="preload" href="/eppi-cinema-logo-optimized.webp" as="image" fetchpriority="high" crossorigin type="image/webp" media="(max-width: 768px)">
+    <link rel="preload" href="/nossa-tv-logo-optimized.webp" as="image" fetchpriority="high" crossorigin type="image/webp" media="(max-width: 768px)">
+    <link rel="preload" href="/lovable-uploads/717a228b-ebde-4d63-bf4d-3bcdcbb96089.png" as="image" fetchpriority="medium" crossorigin type="image/png">
+    
+    <!-- Prefetch WebP optimized images for future use with cache hints -->
+    <link rel="prefetch" href="/eppi-cinema-32x32.webp" as="image" type="image/webp">
+    <link rel="prefetch" href="/nossa-tv-32x32.webp" as="image" type="image/webp">
+    
+    <!-- Comprehensive cache optimization for all static assets -->
     <script>
-      // Fallback for CSS loading
-      !function(e){"use strict";var t=function(t,n,r){function o(e){return i.body?e():void setTimeout(function(){o(e)})}function a(){d.addEventListener&&d.removeEventListener("load",a),d.media=r||"all"}var i=e.document,d=i.createElement("link");if(n)d.id=n;d.rel="stylesheet",d.href=t,d.media="only x",o(function(){i.head.appendChild(d)}),setTimeout(a),d.addEventListener&&d.addEventListener("load",a)};t("/src/index.css")}(this);
+      // Add cache headers to ALL resource requests immediately
+      if ('fetch' in window) {
+        const originalFetch = window.fetch;
+        window.fetch = function(...args) {
+          const [resource, config = {}] = args;
+          
+          // Force cache for ALL static assets
+          if (typeof resource === 'string') {
+            const isStaticAsset = resource.includes('.png') || 
+                                resource.includes('.jpg') || 
+                                resource.includes('.jpeg') || 
+                                resource.includes('.webp') || 
+                                resource.includes('.js') || 
+                                resource.includes('.css') ||
+                                resource.includes('/assets/') ||
+                                resource.includes('/lovable-uploads/');
+                                
+            if (isStaticAsset) {
+              // Force aggressive caching
+              config.cache = 'force-cache';
+              config.headers = config.headers || {};
+              config.headers['Cache-Control'] = 'public, max-age=31536000, immutable';
+            }
+          }
+          
+          return originalFetch(resource, config);
+        };
+      }
+      
+      // Override XMLHttpRequest for additional cache control
+      if ('XMLHttpRequest' in window) {
+        const originalOpen = XMLHttpRequest.prototype.open;
+        XMLHttpRequest.prototype.open = function(method, url, ...args) {
+          const result = originalOpen.call(this, method, url, ...args);
+          
+          if (typeof url === 'string') {
+            const isStaticAsset = url.includes('.png') || 
+                                 url.includes('.jpg') || 
+                                 url.includes('.jpeg') || 
+                                 url.includes('.webp') || 
+                                 url.includes('.js') || 
+                                 url.includes('.css') ||
+                                 url.includes('/assets/') ||
+                                 url.includes('/lovable-uploads/');
+                                 
+            if (isStaticAsset) {
+              this.setRequestHeader('Cache-Control', 'public, max-age=31536000, immutable');
+            }
+          }
+          
+          return result;
+        };
+      }
     </script>
+    
+    <!-- Critical CSS inlined for fastest rendering -->
+    <style>
+      /* Reset and base styles */
+      *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+      #root { min-height: 100vh; }
+      
+      /* Critical CSS variables */
+      :root {
+        --background: 0 0% 100%;
+        --foreground: 222.2 84% 4.9%;
+        --primary: 222.2 47.4% 11.2%;
+        --primary-foreground: 210 40% 98%;
+        --secondary: 210 40% 96.1%;
+        --border: 214.3 31.8% 91.4%;
+        --radius: 0.5rem;
+      }
+      .dark {
+        --background: 222.2 84% 4.9%;
+        --foreground: 210 40% 98%;
+        --primary: 210 40% 98%;
+        --border: 217.2 32.6% 17.5%;
+      }
+      
+      /* Performance optimizations to prevent forced reflows */
+      * {
+        contain: layout style;
+      }
+      
+      #root {
+        contain: layout style paint;
+        isolation: isolate;
+      }
+      
+      /* Optimize common layout-triggering elements */
+      nav, header, main, section, aside, footer {
+        contain: layout style;
+      }
+      
+      /* Promote frequently changing elements to their own layer */
+      .transform, [class*="transform"], [class*="translate"], [class*="scale"], [class*="rotate"] {
+        will-change: transform;
+        transform: translateZ(0);
+      }
+      
+      /* Optimize buttons and interactive elements */
+      button, a, [role="button"] {
+        contain: layout style;
+        transform: translateZ(0);
+      }
+      
+      /* Prevent layout shifts from images */
+      img {
+        contain: layout style;
+        display: block;
+        max-width: 100%;
+        height: auto;
+      }
+      
+      /* Critical layout styles */
+      .container { width: 100%; margin: 0 auto; padding: 0 1rem; }
+      .flex { display: flex; }
+      .items-center { align-items: center; }
+      .justify-between { justify-content: space-between; }
+      .justify-center { justify-content: center; }
+      .text-center { text-align: center; }
+      .w-full { width: 100%; }
+      .h-full { height: 100%; }
+      .min-h-screen { min-height: 100vh; }
+      .relative { position: relative; }
+      .absolute { position: absolute; }
+      .fixed { position: fixed; }
+      .top-0 { top: 0; }
+      .z-50 { z-index: 50; }
+      .bg-white { background-color: rgb(255 255 255); }
+      .text-white { color: rgb(255 255 255); }
+      .text-black { color: rgb(0 0 0); }
+      .font-bold { font-weight: 700; }
+      .rounded { border-radius: 0.25rem; }
+      .p-4 { padding: 1rem; }
+      .px-4 { padding-left: 1rem; padding-right: 1rem; }
+      .py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+      .mb-4 { margin-bottom: 1rem; }
+      .mt-4 { margin-top: 1rem; }
+      
+      /* Critical gradient backgrounds */
+      .bg-gradient-to-r { background-image: linear-gradient(to right, var(--tw-gradient-stops)); }
+      .bg-gradient-to-br { background-image: linear-gradient(to bottom right, var(--tw-gradient-stops)); }
+      .from-gray-900 { --tw-gradient-from: rgb(17 24 39); --tw-gradient-to: rgb(17 24 39 / 0); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+      .via-purple-900 { --tw-gradient-to: rgb(88 28 135 / 0); --tw-gradient-stops: var(--tw-gradient-from), rgb(88 28 135), var(--tw-gradient-to); }
+      .to-blue-900 { --tw-gradient-to: rgb(30 58 138); }
+      
+      /* Hide content initially to prevent FOUC */
+      .loading-fallback { display: none; }
+    </style>
+    
+    <!-- Aggressive async CSS loading to eliminate render-blocking -->
+    <script>
+      (function() {
+        // Block ALL synchronous CSS loading at the earliest possible moment
+        var originalCreateElement = document.createElement;
+        var originalAppendChild = document.head.appendChild;
+        var originalInsertBefore = document.head.insertBefore;
+        
+        // Override createElement to force async CSS
+        document.createElement = function(tagName) {
+          var element = originalCreateElement.call(document, tagName);
+          if (tagName.toLowerCase() === 'link') {
+            var originalSetAttribute = element.setAttribute;
+            element.setAttribute = function(name, value) {
+              if (name === 'rel' && value === 'stylesheet') {
+                originalSetAttribute.call(this, 'rel', 'preload');
+                originalSetAttribute.call(this, 'as', 'style');
+                originalSetAttribute.call(this, 'onload', 'this.onload=null;this.rel="stylesheet"');
+              }
+              return originalSetAttribute.call(this, name, value);
+            };
+          }
+          return element;
+        };
+        
+        // Override appendChild to catch direct CSS insertions
+        document.head.appendChild = function(element) {
+          if (element.tagName === 'LINK' && element.rel === 'stylesheet') {
+            element.rel = 'preload';
+            element.as = 'style';
+            element.onload = function() { this.onload=null; this.rel='stylesheet'; };
+          }
+          return originalAppendChild.call(this, element);
+        };
+        
+        // Override insertBefore for CSS insertions
+        document.head.insertBefore = function(element, before) {
+          if (element.tagName === 'LINK' && element.rel === 'stylesheet') {
+            element.rel = 'preload';
+            element.as = 'style';
+            element.onload = function() { this.onload=null; this.rel='stylesheet'; };
+          }
+          return originalInsertBefore.call(this, element, before);
+        };
+        
+        // Immediate DOM observer for runtime CSS injections
+        var observer = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            mutation.addedNodes.forEach(function(node) {
+              if (node.tagName === 'LINK' && node.rel === 'stylesheet') {
+                node.rel = 'preload';
+                node.as = 'style';
+                node.onload = function() { this.onload=null; this.rel='stylesheet'; };
+              }
+            });
+          });
+        });
+        observer.observe(document.head, { childList: true, subtree: true });
+        
+        // Optimized CSS loader using preload technique
+        function loadCSS(href) {
+          var css = document.createElement('link');
+          css.rel = 'preload';
+          css.as = 'style';
+          css.href = href;
+          css.onload = function() { 
+            this.onload = null; 
+            this.rel = 'stylesheet'; 
+          };
+          css.onerror = function() { this.remove(); };
+          document.head.appendChild(css);
+          
+          // Fallback for browsers that don't support preload
+          setTimeout(function() {
+            if (css.rel !== 'stylesheet') {
+              css.rel = 'stylesheet';
+            }
+          }, 100);
+          
+          return css;
+        }
+        
+        // Enhanced CSS detection and loading
+        var cssPatterns = ['/assets/index-', '/src/index.css'];
+        var cssLoaded = false;
+        
+        // Try to find CSS from existing script tags
+        var scripts = document.querySelectorAll('script[src]');
+        for (var i = 0; i < scripts.length; i++) {
+          var src = scripts[i].src;
+          if (src.includes('/assets/index-') && src.endsWith('.js')) {
+            var cssFile = src.replace(/\.js$/, '.css');
+            loadCSS(cssFile);
+            cssLoaded = true;
+            break;
+          }
+        }
+        
+        // Development fallback
+        if (!cssLoaded) {
+          loadCSS('/src/index.css');
+        }
+        
+        // Restore original functions after page load
+        window.addEventListener('load', function() {
+          observer.disconnect();
+          document.createElement = originalCreateElement;
+          document.head.appendChild = originalAppendChild;
+          document.head.insertBefore = originalInsertBefore;
+        });
+      })();
+    </script>
+    
+    <!-- Fallback for no-JS environments -->
+<noscript>
+  <link rel="stylesheet" href="/assets/index-D3bDqBN7.css">
+  <link rel="stylesheet" href="/src/index.css">
+</noscript>
     
     <link rel="icon" href="/lovable-uploads/717a228b-ebde-4d63-bf4d-3bcdcbb96089.png" type="image/png">
 
-    <meta property="og:title" content="Eppi Cinema - Compre sua Recarga!" />
-    <meta property="og:description" content="Compre sua recarga de cinema online" />
+    <meta property="og:title" content="Eppi Cinema - Compre sua Recarga Online | Recargas Instantâneas" />
+    <meta property="og:description" content="Compre recargas de Eppi Cinema e NossaTV online. Ativação instantânea, preços promocionais e suporte 24h. Economize até R$ 69 no plano anual!" />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <meta property="og:image" content="https://eppicinemalandingpage.lovable.app/lovable-uploads/717a228b-ebde-4d63-bf4d-3bcdcbb96089.png" />
+    <meta property="og:url" content="https://eppicinemalandingpage.lovable.app/" />
+    <meta property="og:site_name" content="Eppi Cinema" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <meta name="twitter:title" content="Eppi Cinema - Recargas Instantâneas Online" />
+    <meta name="twitter:description" content="Economize até R$ 69 no plano anual! Recargas instantâneas para Eppi Cinema e NossaTV." />
+    <meta name="twitter:image" content="https://eppicinemalandingpage.lovable.app/lovable-uploads/717a228b-ebde-4d63-bf4d-3bcdcbb96089.png" />
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Eppi Cinema",
+      "description": "Recargas online para TV Box e streaming. Eppi Cinema e NossaTV com ativação instantânea.",
+      "url": "https://eppicinemalandingpage.lovable.app/",
+      "logo": "https://eppicinemalandingpage.lovable.app/lovable-uploads/717a228b-ebde-4d63-bf4d-3bcdcbb96089.png",
+      "image": "https://eppicinemalandingpage.lovable.app/lovable-uploads/717a228b-ebde-4d63-bf4d-3bcdcbb96089.png",
+      "telephone": "+55-11-99999-9999",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "BR"
+      },
+      "openingHours": "Mo-Su 00:00-23:59",
+      "priceRange": "R$ 15 - R$ 310",
+      "serviceArea": {
+        "@type": "Country",
+        "name": "Brasil"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Recargas e Planos",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Plano Mensal Eppi Cinema",
+              "description": "Acesso mensal completo ao Eppi Cinema"
+            },
+            "price": "15.00",
+            "priceCurrency": "BRL"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service", 
+              "name": "Plano Anual Eppi Cinema",
+              "description": "Plano anual com desconto especial"
+            },
+            "price": "149.00",
+            "priceCurrency": "BRL"
+          }
+        ]
+      }
+    }
+    </script>
   </head>
 
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <script type="module" src="/src/main.tsx" defer></script>
     <script src="https://cdn.gpteng.co/gptengineer.js" type="module" defer></script>
   </body>
 </html>

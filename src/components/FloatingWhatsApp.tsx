@@ -12,7 +12,7 @@ export default function FloatingWhatsApp() {
     >
       <Button 
         size="lg"
-        className="rounded-full bg-green-500 hover:bg-green-600 shadow-lg hover:shadow-xl transition-all duration-300"
+        className="rounded-full bg-green-600 hover:bg-green-700 text-white shadow-lg hover:shadow-xl transition-all duration-300"
       >
         <MessageSquare className="mr-2" />
         Suporte
