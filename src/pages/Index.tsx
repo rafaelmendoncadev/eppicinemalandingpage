@@ -2,8 +2,9 @@
 import { Suspense, lazy } from "react";
 import Hero from "@/components/Hero";
 import LazySection from "@/components/LazySection";
-// Import Navbar directly to avoid request chain - it's critical above-the-fold content
-import Navbar from "@/components/Navbar";
+
+// Lazy load Navbar after hero renders
+const Navbar = lazy(() => import("@/components/Navbar"));
 
 // Lazy load components only when visible
 const HowItWorks = lazy(() => 
@@ -40,7 +41,15 @@ export default function Index() {
       <div className="min-h-screen">
         {/* Header with navigation */}
         <header role="banner">
-          <Navbar />
+          <Suspense fallback={
+            <nav 
+              className="sticky top-0 z-50 w-full h-16 bg-gradient-to-r from-gray-900/95 via-purple-900/95 to-blue-900/95 backdrop-blur-md border-b border-gray-700/50 animate-pulse"
+              role="navigation"
+              aria-label="Navegação principal"
+            />
+          }>
+            <Navbar />
+          </Suspense>
         </header>
         
         {/* Main content */}
