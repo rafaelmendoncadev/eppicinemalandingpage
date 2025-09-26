@@ -36,13 +36,20 @@ const Hero = () => {
       {/* Background Pattern - Decorative only */}
       <div className="absolute inset-0 opacity-10 hero-pattern" aria-hidden="true" />
       
-      {/* Content */}
-      <div className="relative z-10 text-center text-white px-4 max-w-6xl mx-auto animate-fade-in">
-        {/* Main Title */}
+      {/* Content - Optimized for LCP */}
+      <div className="relative z-10 text-center text-white px-4 max-w-6xl mx-auto">
+        {/* Main Title - Critical LCP element optimized */}
         <header className="mb-6">
           <h1 
             id="hero-title"
-            className="text-3xl md:text-5xl lg:text-6xl font-bold mb-3 bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent leading-tight"
+            className="text-3xl md:text-5xl lg:text-6xl font-bold mb-3 text-white leading-tight"
+            style={{ 
+              background: 'linear-gradient(to right, #ffffff, #dbeafe, #e0e7ff)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              willChange: 'auto'
+            }}
           >
             {t('hero.subtitle')}
           </h1>
@@ -51,14 +58,15 @@ const Hero = () => {
           </h2>
         </header>
 
-        {/* Information Cards */}
+        {/* Information Cards - Deferred animation for better LCP */}
         <div className="mb-6 max-w-5xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
             {/* Did You Know Card */}
             <article 
-              className="bg-gradient-to-br from-red-500/20 to-orange-500/20 backdrop-blur-lg border border-red-500/30 rounded-lg p-3 md:p-4 transform hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-red-500/25 animate-slide-up"
+              className="bg-gradient-to-br from-red-500/20 to-orange-500/20 backdrop-blur-lg border border-red-500/30 rounded-lg p-3 md:p-4 transform hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-red-500/25"
               role="article"
               aria-labelledby="did-you-know-title"
+              style={{ animation: 'fade-in 0.6s ease-out 0.3s both' }}
             >
               <h3 id="did-you-know-title" className="text-lg md:text-xl font-bold text-white mb-2">
                 {t('hero.didYouKnow')}
@@ -71,10 +79,10 @@ const Hero = () => {
 
             {/* Our Solution Card */}
             <article 
-              className="bg-gradient-to-br from-green-500/20 to-blue-500/20 backdrop-blur-lg border border-green-500/30 rounded-lg p-3 md:p-4 transform hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-green-500/25 animate-slide-up"
+              className="bg-gradient-to-br from-green-500/20 to-blue-500/20 backdrop-blur-lg border border-green-500/30 rounded-lg p-3 md:p-4 transform hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-green-500/25"
               role="article"
               aria-labelledby="our-solution-title"
-              style={{ animationDelay: '0.1s' }}
+              style={{ animation: 'fade-in 0.6s ease-out 0.4s both' }}
             >
               <h3 id="our-solution-title" className="text-lg md:text-xl font-bold text-white mb-2">
                 {t('hero.ourSolution')}
