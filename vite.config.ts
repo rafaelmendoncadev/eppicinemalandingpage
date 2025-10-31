@@ -17,22 +17,38 @@ function preloadPlugin(): Plugin {
       // Find all chunks and assets
       for (const [, chunk] of Object.entries(ctx.bundle)) {
         if (chunk.type === 'chunk') {
-          // Preload entry chunks and critical vendor chunks
-          if (chunk.isEntry || chunk.name === 'vendor' || chunk.name === 'ui') {
+          // Preload entry chunks first (highest priority)
+          if (chunk.isEntry) {
+            preloadTags.unshift(
+              `<link rel="modulepreload" href="/${chunk.fileName}" as="script" crossorigin>`
+            );
+          }
+          // Then preload critical vendor chunks
+          else if (chunk.name === 'vendor' || chunk.name === 'ui') {
             preloadTags.push(
-              `<link rel="modulepreload" href="/${chunk.fileName}" crossorigin>`
+              `<link rel="modulepreload" href="/${chunk.fileName}" as="script" crossorigin>`
             );
           }
         } else if (chunk.type === 'asset' && chunk.fileName.endsWith('.css')) {
-          // Preload CSS files
-          preloadTags.push(
+          // Preload CSS files with highest priority (before scripts)
+          preloadTags.unshift(
             `<link rel="preload" href="/${chunk.fileName}" as="style" crossorigin>`
           );
         }
       }
       
-      // Inject preload tags before the closing </head>
-      return html.replace('</head>', `${preloadTags.join('\n    ')}\n  </head>`);
+      // Inject preload tags right after meta tags for earliest discovery
+      // This ensures the browser discovers these resources before parsing the rest of the HTML
+      const metaEndIndex = html.lastIndexOf('</head>');
+      if (metaEndIndex > 0) {
+        return html.slice(0, metaEndIndex) + 
+               '\n    <!-- Preload critical resources -->\n    ' + 
+               preloadTags.join('\n    ') + 
+               '\n  ' + 
+               html.slice(metaEndIndex);
+      }
+      
+      return html;
     }
   };
 }
