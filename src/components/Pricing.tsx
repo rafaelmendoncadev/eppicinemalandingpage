@@ -90,7 +90,8 @@ const Pricing = () => {
                     onClick={() => handleDualPurchaseClick(
                       language === 'en' ? '' : 'https://biolivre.com.br/suportenuvembr', 
                       language,
-                      language === 'en' ? '/payment-instructions.html' : undefined
+                      language === 'en' ? '/payment-instructions.html' : undefined,
+                      { name: t('pricing.monthly.title'), price: t('pricing.monthly.price') }
                     )}
                   >
                     {t('promotions.activateNow')}
@@ -164,7 +165,8 @@ const Pricing = () => {
                     onClick={() => handleDualPurchaseClick(
                       language === 'en' ? '' : 'https://biolivre.com.br/suportenuvembr', 
                       language,
-                      language === 'en' ? '/payment-instructions.html' : undefined
+                      language === 'en' ? '/payment-instructions.html' : undefined,
+                      { name: t('pricing.annual.title'), price: t('pricing.annual.price') }
                     )}
                   >
                     {t('promotions.activateNow')}
@@ -224,7 +226,11 @@ const Pricing = () => {
                   <div className="mt-auto">
                     <Button 
                       className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white py-3 text-base font-bold rounded-xl transition-all duration-300 shadow-lg"
-                      onClick={() => handlePurchaseClick('https://biolivre.com.br/suportenuvembr', language)}
+                      onClick={() => handlePurchaseClick(
+                        'https://biolivre.com.br/suportenuvembr', 
+                        language,
+                        { name: 'Recarga Anual NossaTV', price: 'R$ 249,99' }
+                      )}
                     >
                       RECARREGAR AGORA
                     </Button>
@@ -295,7 +301,11 @@ const Pricing = () => {
                   <div className="mt-auto">
                     <Button 
                       className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white py-3 text-base font-bold rounded-xl transition-all duration-300 shadow-lg transform hover:scale-105"
-                      onClick={() => handlePurchaseClick('https://biolivre.com.br/suportenuvembr', language)}
+                      onClick={() => handlePurchaseClick(
+                        'https://biolivre.com.br/suportenuvembr', 
+                        language,
+                        { name: t('pricing.combo.title'), price: t('pricing.combo.price') }
+                      )}
                     >
                       {t('promotions.activateNow')}
                     </Button>

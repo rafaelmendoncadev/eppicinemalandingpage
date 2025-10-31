@@ -3,7 +3,44 @@
  * This provides a better user experience by keeping the original site visible in the background
  */
 
+/**
+ * Validates URL to prevent XSS and open redirect attacks
+ * Only allows HTTPS protocol and whitelisted domains
+ */
+const isValidURL = (url: string): boolean => {
+  try {
+    const parsed = new URL(url);
+    
+    // Only allow https: protocol (reject javascript:, data:, etc.)
+    if (parsed.protocol !== 'https:') {
+      console.error('Security: Invalid protocol. Only HTTPS is allowed.');
+      return false;
+    }
+    
+    // Whitelist allowed domains
+    const allowedDomains = ['biolivre.com.br', 'wa.me'];
+    const isAllowed = allowedDomains.some(domain => 
+      parsed.hostname === domain || parsed.hostname.endsWith('.' + domain)
+    );
+    
+    if (!isAllowed) {
+      console.error('Security: Domain not whitelisted:', parsed.hostname);
+      return false;
+    }
+    
+    return true;
+  } catch (error) {
+    console.error('Security: Invalid URL format:', error);
+    return false;
+  }
+};
+
 export const openPurchasePopup = (url: string, windowName: string = 'purchaseWindow') => {
+  // Validate URL before opening
+  if (!isValidURL(url)) {
+    console.error('Security: Blocked attempt to open invalid URL:', url);
+    return null;
+  }
   // Get current window dimensions
   const currentWidth = window.innerWidth;
   const currentHeight = window.innerHeight;
@@ -47,6 +84,16 @@ export const openPurchasePopup = (url: string, windowName: string = 'purchaseWin
  * @param imageUrl - The image URL for the second window
  */
 export const openDualPopupWindows = (whatsappUrl: string, imageUrl: string) => {
+  // Validate both URLs before opening
+  if (!isValidURL(whatsappUrl)) {
+    console.error('Security: Blocked attempt to open invalid WhatsApp URL:', whatsappUrl);
+    return { whatsappWindow: null, imageWindow: null };
+  }
+  if (!isValidURL(imageUrl)) {
+    console.error('Security: Blocked attempt to open invalid image URL:', imageUrl);
+    return { whatsappWindow: null, imageWindow: null };
+  }
+  
   // Get current window dimensions
   const currentWidth = window.innerWidth;
   const currentHeight = window.innerHeight;
@@ -92,11 +139,22 @@ export const openDualPopupWindows = (whatsappUrl: string, imageUrl: string) => {
 };
 
 /**
- * Opens a purchase link in a popup window
+ * Opens a purchase link in a popup window with confirmation dialog
  * @param url - The URL to open
  * @param language - Current language ('pt' or 'en')
+ * @param planDetails - Optional plan details to show in confirmation
  */
-export const handlePurchaseClick = (url: string, language: string = 'pt') => {
+export const handlePurchaseClick = (url: string, language: string = 'pt', planDetails?: { name: string; price: string }) => {
+  // Show confirmation dialog before redirecting to payment
+  const confirmMessage = language === 'en' 
+    ? `You are about to be redirected to the payment page${planDetails ? ` for ${planDetails.name} (${planDetails.price})` : ''}.\n\nDomain: biolivre.com.br\n\nProceed with payment?`
+    : `Você será redirecionado para a página de pagamento${planDetails ? ` do plano ${planDetails.name} (${planDetails.price})` : ''}.\n\nDomínio: biolivre.com.br\n\nDeseja continuar?`;
+  
+  if (!confirm(confirmMessage)) {
+    console.log('User cancelled payment redirect');
+    return null;
+  }
+  
   const windowName = language === 'en' ? 'purchaseWindowEN' : 'purchaseWindowPT';
   return openPurchasePopup(url, windowName);
 };
@@ -106,14 +164,23 @@ export const handlePurchaseClick = (url: string, language: string = 'pt') => {
  * @param url - The URL (used for Portuguese version)
  * @param language - Current language
  * @param imageUrl - The payment instructions URL (English only)
+ * @param planDetails - Optional plan details to show in confirmation
  */
-export const handleDualPurchaseClick = (url: string, language: string = 'pt', imageUrl?: string) => {
+export const handleDualPurchaseClick = (url: string, language: string = 'pt', imageUrl?: string, planDetails?: { name: string; price: string }) => {
   if (language === 'en' && imageUrl) {
+    // Show confirmation for English version before showing payment instructions
+    const confirmMessage = `You are about to view payment instructions${planDetails ? ` for ${planDetails.name} (${planDetails.price})` : ''}.\n\nProceed?`;
+    
+    if (!confirm(confirmMessage)) {
+      console.log('User cancelled payment instructions view');
+      return null;
+    }
+    
     // Open only payment instructions window for English version
     const windowName = 'paymentInstructionsEN';
     return openPurchasePopup(imageUrl, windowName);
   } else {
-    // Use single popup for Portuguese
-    return handlePurchaseClick(url, language);
+    // Use single popup for Portuguese with confirmation
+    return handlePurchaseClick(url, language, planDetails);
   }
 };
