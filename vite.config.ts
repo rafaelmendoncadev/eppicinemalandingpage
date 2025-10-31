@@ -58,12 +58,44 @@ export default defineConfig(({ mode }) => ({
     // Optimize build output for better caching
     rollupOptions: {
       output: {
-        // Better chunking strategy for caching
-        manualChunks: {
-          // Vendor chunk for stable third-party libraries
-          vendor: ['react', 'react-dom'],
-          // UI components chunk
-          ui: ['@radix-ui/react-slot', '@radix-ui/react-toast', 'lucide-react'],
+        // Aggressive chunking strategy to reduce unused JavaScript
+        manualChunks: (id) => {
+          // Vendor chunks - separate stable dependencies
+          if (id.includes('node_modules')) {
+            // React core
+            if (id.includes('react') || id.includes('react-dom')) {
+              return 'vendor';
+            }
+            // Radix UI components - split by component for lazy loading
+            if (id.includes('@radix-ui')) {
+              const match = id.match(/@radix-ui\/react-([^/]+)/);
+              if (match) return `ui-${match[1]}`;
+              return 'ui';
+            }
+            // Lucide icons - separate chunk
+            if (id.includes('lucide-react')) {
+              return 'icons';
+            }
+            // Router
+            if (id.includes('react-router-dom')) {
+              return 'router';
+            }
+            // Other utilities
+            if (id.includes('clsx') || id.includes('tailwind-merge') || id.includes('class-variance-authority')) {
+              return 'utils';
+            }
+            // Everything else goes to vendor
+            return 'vendor-misc';
+          }
+          
+          // Application code splitting
+          if (id.includes('/src/components/')) {
+            // Extract component name for granular splitting
+            const match = id.match(/\/components\/([^/]+)\./);
+            if (match && !match[1].startsWith('ui')) {
+              return `component-${match[1].toLowerCase()}`;
+            }
+          }
         },
         // Optimize asset file names for long-term caching
         assetFileNames: (assetInfo) => {
@@ -86,25 +118,37 @@ export default defineConfig(({ mode }) => ({
     cssCodeSplit: true,
     // Optimize asset inclusion threshold
     assetsInlineLimit: 4096,
-    // Target modern browsers for better optimization
-    target: 'es2018',
-    // Enable minification for production
+    // Target modern browsers for better tree shaking
+    target: 'es2020',
+    // Enable minification for production with aggressive settings
     minify: mode === 'production' ? 'esbuild' : false,
     // Generate source maps for debugging but optimize for production
     sourcemap: mode === 'development',
+    // Enable more aggressive tree shaking
+    modulePreload: {
+      polyfill: false,
+    },
   },
-  // Optimize dependencies for better caching
+  // Optimize dependencies for better caching and tree shaking
   optimizeDeps: {
     include: [
       'react',
       'react-dom',
       'react-router-dom',
-      '@radix-ui/react-slot',
-      '@radix-ui/react-toast',
-      'lucide-react',
-      'class-variance-authority',
-      'clsx',
-      'tailwind-merge'
     ],
+    exclude: [
+      // Exclude large dependencies that should be loaded on-demand
+      '@radix-ui/react-alert-dialog',
+      '@radix-ui/react-dialog',
+      '@radix-ui/react-separator',
+    ],
+  },
+  // Enable esbuild optimization for better tree shaking
+  esbuild: {
+    treeShaking: true,
+    legalComments: 'none',
+    minifyIdentifiers: mode === 'production',
+    minifySyntax: mode === 'production',
+    minifyWhitespace: mode === 'production',
   },
 }));
