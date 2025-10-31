@@ -194,7 +194,7 @@ const Hero = () => {
                     De R$ 310,00
                   </p>
                   <p className="text-green-400 text-2xl md:text-3xl font-bold" aria-label="Preço promocional">
-                    R$ 241,00
+                    R$ 249,99
                   </p>
                   <p className="text-yellow-400 font-bold text-sm mt-1">
                     💳 2x sem juros

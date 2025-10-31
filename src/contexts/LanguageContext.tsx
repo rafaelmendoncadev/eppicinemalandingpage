@@ -48,7 +48,7 @@ const translations = {
     'promotions.nossatvDiscount': '22% OFF',
     'promotions.nossatvTitle': 'Recarga Anual NossaTV',
     'promotions.nossatvOriginalPrice': 'De R$ 310,00',
-    'promotions.nossatvPrice': 'Por R$ 241,00',
+    'promotions.nossatvPrice': 'Por R$ 249,99',
     'promotions.nossatvSavings': '💎 Economize R$ 69,00 na sua recarga anual da NossaTV!',
     'promotions.nossatvInstallments': '2x de R$ 120,50 sem juros',
     'promotions.activateNow': 'RECARREGAR AGORA',

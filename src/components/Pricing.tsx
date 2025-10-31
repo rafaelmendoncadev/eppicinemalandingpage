@@ -191,7 +191,7 @@ const Pricing = () => {
                     </div>
                     <div className="text-2xl font-bold">
                       <span className="bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">
-                        R$ 241,00
+                        R$ 249,99
                       </span>
                     </div>
                     <div className="text-green-400 font-semibold text-sm mt-1">
