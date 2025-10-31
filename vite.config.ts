@@ -2,6 +2,40 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
+import type { Plugin } from 'vite';
+
+// Plugin to inject preload hints for critical resources
+function preloadPlugin(): Plugin {
+  return {
+    name: 'vite-plugin-preload',
+    transformIndexHtml(html, ctx) {
+      // Only run during build
+      if (!ctx.bundle) return html;
+      
+      const preloadTags: string[] = [];
+      
+      // Find all chunks and assets
+      for (const [, chunk] of Object.entries(ctx.bundle)) {
+        if (chunk.type === 'chunk') {
+          // Preload entry chunks and critical vendor chunks
+          if (chunk.isEntry || chunk.name === 'vendor' || chunk.name === 'ui') {
+            preloadTags.push(
+              `<link rel="modulepreload" href="/${chunk.fileName}" crossorigin>`
+            );
+          }
+        } else if (chunk.type === 'asset' && chunk.fileName.endsWith('.css')) {
+          // Preload CSS files
+          preloadTags.push(
+            `<link rel="preload" href="/${chunk.fileName}" as="style" crossorigin>`
+          );
+        }
+      }
+      
+      // Inject preload tags before the closing </head>
+      return html.replace('</head>', `${preloadTags.join('\n    ')}\n  </head>`);
+    }
+  };
+}
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
@@ -13,6 +47,7 @@ export default defineConfig(({ mode }) => ({
     react(),
     mode === 'development' &&
     componentTagger(),
+    preloadPlugin(),
   ].filter(Boolean),
   resolve: {
     alias: {
