@@ -91,7 +91,7 @@ const translations = {
     'pricing.combo.title': 'COMBO ANUAL',
     'pricing.combo.subtitle': 'Eppi Cinema + NossaTV',
     'pricing.combo.originalPrice': 'De R$ 410,00',
-    'pricing.combo.price': 'R$ 345,00',
+    'pricing.combo.price': 'R$ 399,99',
     'pricing.combo.savings': 'Economize R$ 65,00 (16% OFF)!',
     'pricing.combo.installments': '3x de R$ 115,00 sem juros',
     'pricing.combo.description': 'Acesso completo aos dois melhores apps de streaming',
