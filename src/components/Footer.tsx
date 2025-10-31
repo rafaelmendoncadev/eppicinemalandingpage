@@ -19,7 +19,7 @@ export default function Footer() {
                 {t('footer.description')}
               </p>
               <div className="flex space-x-3">
-                <a href="https://wa.me/5561982223599?text=Necessito%20de%20Suporte%20para%20o%20Eppi%20Cinema" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                <a href="https://wa.me/5561993077154?text=Necessito%20de%20Suporte%20para%20o%20Eppi%20Cinema" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
                   <MessageCircle className="w-4 h-4" />
                 </a>
                 <a href="mailto:albieroindica@gmail.com" className="w-8 h-8 bg-gradient-to-br from-red-500 to-red-600 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
@@ -41,9 +41,9 @@ export default function Footer() {
               <div className="space-y-3">
                 <h4 className="text-base font-semibold text-white">{t('footer.support')}</h4>
                 <ul className="space-y-2">
-                  <li><a href="https://wa.me/5561982223599?text=Necessito%20de%20Suporte%20para%20o%20Eppi%20Cinema" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-blue-400 transition-colors text-sm">{t('footer.supportLink')}</a></li>
-                  <li><a href="https://wa.me/5561982223599?text=Necessito%20de%20Suporte%20para%20o%20Eppi%20Cinema" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-blue-400 transition-colors text-sm">{t('footer.helpCenter')}</a></li>
-                  <li><a href="https://wa.me/5561982223599?text=Necessito%20de%20Suporte%20para%20o%20Eppi%20Cinema" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-blue-400 transition-colors text-sm">{t('footer.faq')}</a></li>
+                  <li><a href="https://wa.me/5561993077154?text=Necessito%20de%20Suporte%20para%20o%20Eppi%20Cinema" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-blue-400 transition-colors text-sm">{t('footer.supportLink')}</a></li>
+                  <li><a href="https://wa.me/5561993077154?text=Necessito%20de%20Suporte%20para%20o%20Eppi%20Cinema" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-blue-400 transition-colors text-sm">{t('footer.helpCenter')}</a></li>
+                  <li><a href="https://wa.me/5561993077154?text=Necessito%20de%20Suporte%20para%20o%20Eppi%20Cinema" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-blue-400 transition-colors text-sm">{t('footer.faq')}</a></li>
                 </ul>
               </div>
 
@@ -56,11 +56,11 @@ export default function Footer() {
                   </div>
                   <div className="flex items-center space-x-2">
                     <Phone className="w-4 h-4 text-green-400 flex-shrink-0" />
-                    <span className="text-gray-300 text-sm">+55 (61) 98222-3599</span>
+                    <span className="text-gray-300 text-sm">+55 (61) 99307-7154</span>
                   </div>
                   <div className="flex items-start space-x-2">
                     <MessageCircle className="w-4 h-4 text-purple-400 mt-0.5 flex-shrink-0" />
-                    <a href="https://wa.me/5561982223599?text=Necessito%20de%20Suporte%20para%20o%20Eppi%20Cinema" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-purple-400 transition-colors text-sm">{t('footer.chat')}</a>
+                    <a href="https://wa.me/5561993077154?text=Necessito%20de%20Suporte%20para%20o%20Eppi%20Cinema" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-purple-400 transition-colors text-sm">{t('footer.chat')}</a>
                   </div>
                 </div>
               </div>
@@ -77,7 +77,7 @@ export default function Footer() {
                 {t('footer.description')}
               </p>
               <div className="flex space-x-3">
-                <a href="https://wa.me/5561982223599?text=Necessito%20de%20Suporte%20para%20o%20Eppi%20Cinema" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                <a href="https://wa.me/5561993077154?text=Necessito%20de%20Suporte%20para%20o%20Eppi%20Cinema" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
                   <MessageCircle className="w-4 h-4" />
                 </a>
                 <a href="mailto:albieroindica@gmail.com" className="w-8 h-8 bg-gradient-to-br from-red-500 to-red-600 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
@@ -98,9 +98,9 @@ export default function Footer() {
             <div className="space-y-3">
               <h4 className="text-base font-semibold text-white">{t('footer.support')}</h4>
               <ul className="space-y-2">
-                <li><a href="https://wa.me/5561982223599?text=Necessito%20de%20Suporte%20para%20o%20Eppi%20Cinema" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-blue-400 transition-colors text-sm">{t('footer.supportLink')}</a></li>
-                <li><a href="https://wa.me/5561982223599?text=Necessito%20de%20Suporte%20para%20o%20Eppi%20Cinema" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-blue-400 transition-colors text-sm">{t('footer.helpCenter')}</a></li>
-                <li><a href="https://wa.me/5561982223599?text=Necessito%20de%20Suporte%20para%20o%20Eppi%20Cinema" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-blue-400 transition-colors text-sm">{t('footer.faq')}</a></li>
+                <li><a href="https://wa.me/5561993077154?text=Necessito%20de%20Suporte%20para%20o%20Eppi%20Cinema" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-blue-400 transition-colors text-sm">{t('footer.supportLink')}</a></li>
+                <li><a href="https://wa.me/5561993077154?text=Necessito%20de%20Suporte%20para%20o%20Eppi%20Cinema" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-blue-400 transition-colors text-sm">{t('footer.helpCenter')}</a></li>
+                <li><a href="https://wa.me/5561993077154?text=Necessito%20de%20Suporte%20para%20o%20Eppi%20Cinema" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-blue-400 transition-colors text-sm">{t('footer.faq')}</a></li>
               </ul>
             </div>
 
@@ -113,11 +113,11 @@ export default function Footer() {
                 </div>
                 <div className="flex items-center space-x-2">
                   <Phone className="w-4 h-4 text-green-400 flex-shrink-0" />
-                  <span className="text-gray-300 text-sm">+55 (61) 98222-3599</span>
+                  <span className="text-gray-300 text-sm">+55 (61) 99307-7154</span>
                 </div>
                 <div className="flex items-start space-x-2">
                   <MessageCircle className="w-4 h-4 text-purple-400 mt-0.5 flex-shrink-0" />
-                  <a href="https://wa.me/5561982223599?text=Necessito%20de%20Suporte%20para%20o%20Eppi%20Cinema" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-purple-400 transition-colors text-sm">{t('footer.chat')}</a>
+                  <a href="https://wa.me/5561993077154?text=Necessito%20de%20Suporte%20para%20o%20Eppi%20Cinema" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-purple-400 transition-colors text-sm">{t('footer.chat')}</a>
                 </div>
               </div>
             </div>
