@@ -8,22 +8,9 @@ export default function Index() {
         <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
           Site em Manutenção
         </h1>
-        <p className="text-xl text-gray-300 mb-8">
+        <p className="text-xl text-gray-300">
           Estamos realizando melhorias no sistema. Voltaremos em breve.
         </p>
-        <div className="bg-white/10 backdrop-blur-md rounded-lg p-6 border border-white/20">
-          <p className="text-white text-lg mb-2">
-            Para atendimento imediato:
-          </p>
-          <a 
-            href="https://wa.me/5511999999999" 
-            className="inline-flex items-center gap-2 text-green-400 hover:text-green-300 transition-colors text-xl font-semibold"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            📱 WhatsApp: (11) 99999-9999
-          </a>
-        </div>
       </div>
     </div>
   );
